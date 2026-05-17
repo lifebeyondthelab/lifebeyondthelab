@@ -9,276 +9,174 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #EBF4FA;
-    --bg2: #F5FBFF;
-    --blue: #5B9FC9;
-    --amber: #D4A843;
-    --sage: #8FAF84;
-    --deep: #1A3A5C;
-    --cloud: #F5FBFF;
-    --muted: #5B7A95;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'EB Garamond', serif;
-    background: linear-gradient(160deg, var(--bg) 0%, var(--bg2) 100%);
-    background-attachment: fixed;
-    color: var(--deep);
-    min-height: 100vh;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; width: 100%;
-    background: var(--deep); z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 56px; padding: 0 2rem;
-  }
-  .nav-logo {
-    font-family: 'EB Garamond', serif; font-size: 18px;
-    color: var(--amber); font-weight: 500; letter-spacing: 0.5px; white-space: nowrap;
-  }
-  .nav-links { display: flex; list-style: none; overflow-x: auto; }
-  .nav-links a {
-    font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 500;
-    letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.55);
-    text-decoration: none; padding: 0 10px; white-space: nowrap; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--amber); }
-
-  /* ── SECTIONS ── */
-  section {
-    min-height: 100vh; padding: 110px 4rem 5rem;
-    max-width: 1200px; margin: 0 auto;
-  }
-  .section-label {
-    font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600;
-    letter-spacing: 3px; text-transform: uppercase; color: var(--amber); margin-bottom: 12px;
-  }
-  h2 {
-    font-family: 'EB Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.6rem);
-    font-weight: 500; line-height: 1.12; color: var(--deep); margin-bottom: 1rem;
-  }
-  h3 { font-family: 'EB Garamond', serif; font-size: 1.45rem; font-weight: 500; color: var(--deep); }
-  p { font-size: 1.1rem; line-height: 1.85; color: var(--muted); max-width: 680px; }
-  .divider { width: 60px; height: 2px; background: var(--amber); margin: 1.5rem 0; }
-
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh; display: flex; flex-direction: column;
-    justify-content: center; padding: 0 4rem; position: relative; overflow: hidden;
-  }
-  #hero::before {
-    content: ''; position: absolute; top: -120px; right: -80px;
-    width: 560px; height: 560px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(91,159,201,0.09) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  #hero::after {
-    content: ''; position: absolute; bottom: 60px; left: -60px;
-    width: 300px; height: 300px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(212,168,67,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-tag {
-    font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 600;
-    letter-spacing: 4px; text-transform: uppercase; color: var(--blue); margin-bottom: 1.5rem;
-  }
-  .hero-title {
-    font-family: 'EB Garamond', serif; font-size: clamp(3.2rem, 7vw, 6.5rem);
-    font-weight: 500; line-height: 1.04; color: var(--deep); margin-bottom: 0.5rem;
-  }
-  .hero-title em { color: var(--amber); font-style: italic; }
-  .hero-tagline {
-    font-family: 'EB Garamond', serif; font-style: italic; font-size: 1.4rem;
-    color: var(--muted); margin: 1.5rem 0 2.5rem; max-width: 580px; line-height: 1.6;
-  }
-  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase; background: var(--deep);
-    color: white; padding: 14px 28px; border: none; cursor: pointer;
-    text-decoration: none; display: inline-block; transition: background 0.2s;
-  }
-  .btn-primary:hover { background: var(--blue); }
-  .btn-outline {
-    font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase; background: transparent;
-    color: var(--deep); padding: 14px 28px; border: 1.5px solid var(--deep);
-    cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s;
-  }
-  .btn-outline:hover { background: var(--deep); color: white; }
-
-  /* ── ABOUT ── */
-  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: start; margin-top: 3rem; }
-  .about-stat { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.25rem 0; border-top: 1px solid rgba(91,159,201,0.2); }
-  .stat-number { font-size: 2.2rem; font-weight: 500; color: var(--amber); line-height: 1; }
-  .stat-label { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
-
-  /* ── THEMES ── */
-  .themes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
-  .theme-card {
-    padding: 1.75rem; border: 1px solid rgba(91,159,201,0.18);
-    background: rgba(255,255,255,0.5); transition: border-color 0.25s, transform 0.25s;
-  }
-  .theme-card:hover { border-color: var(--amber); transform: translateY(-4px); }
-  .theme-icon { font-size: 2rem; margin-bottom: 0.9rem; }
-  .theme-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
-  .theme-card p { font-size: 0.95rem; max-width: none; }
-
-  /* ── ATLAS ── */
-  #atlas-section { max-width: 100%; }
-  .atlas-inner { max-width: 1200px; margin: 0 auto; }
-  .atlas-tabs { display: flex; border-bottom: 1px solid rgba(91,159,201,0.2); margin: 2rem 0; }
-  .atlas-tab {
-    font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase; padding: 12px 24px;
-    cursor: pointer; color: var(--muted); background: none;
-    border: none; border-bottom: 2px solid transparent; transition: all 0.2s;
-  }
-  .atlas-tab.active { color: var(--deep); border-bottom-color: var(--amber); }
-  .atlas-map-wrap { position: relative; border: 1px solid rgba(91,159,201,0.15); overflow: hidden; background: #0a1628; }
-  .atlas-map-wrap img { width: 100%; display: block; opacity: 0.88; }
-  .hs { position: absolute; transform: translate(-50%,-50%); cursor: pointer; }
-  .hs-dot {
-    width: 14px; height: 14px; border-radius: 50%;
-    border: 2px solid white; position: relative; z-index: 2;
-    animation: pulse 2.2s ease-out infinite;
-  }
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(212,168,67,0.55); }
-    70% { box-shadow: 0 0 0 14px rgba(212,168,67,0); }
-    100% { box-shadow: 0 0 0 0 rgba(212,168,67,0); }
-  }
-  .hs-lbl {
-    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-    background: var(--deep); color: white; font-family: 'Raleway', sans-serif;
-    font-size: 9px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
-    padding: 4px 8px; white-space: nowrap; opacity: 0;
-    transition: opacity 0.2s; pointer-events: none;
-  }
-  .hs:hover .hs-lbl { opacity: 1; }
-  .india-fallback {
-    min-height: 420px; display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 1rem; padding: 3rem; text-align: center;
-  }
-  .india-fallback p { color: rgba(255,255,255,0.55); font-size: 0.95rem; max-width: 380px; }
-
-  /* ── POPUP ── */
-  .pop-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(26,58,92,0.45); z-index: 199;
-  }
-  .pop-overlay.open { display: block; }
-  .pop-box {
-    display: none; position: fixed; top: 50%; left: 50%;
-    transform: translate(-50%,-50%); background: var(--cloud);
-    border: 1px solid var(--blue); padding: 2rem; max-width: 500px;
-    width: 92%; z-index: 200; box-shadow: 0 24px 64px rgba(26,58,92,0.22);
-  }
-  .pop-box.open { display: block; }
-  .pop-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--muted); }
-  .pop-tag { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 0.65rem; }
-  .pop-ncert { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin: 0.65rem 0; }
-  .pop-think { margin-top: 1.1rem; padding: 0.85rem 1rem; background: rgba(91,159,201,0.07); border-left: 3px solid var(--amber); font-style: italic; font-size: 1rem; color: var(--deep); line-height: 1.6; }
-
-  /* ── ARTICLES ── */
-  .articles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin-top: 3rem; }
-  .art-card { border: 1px solid rgba(91,159,201,0.15); background: rgba(255,255,255,0.55); overflow: hidden; transition: transform 0.25s, border-color 0.25s; }
-  .art-card:hover { transform: translateY(-4px); border-color: var(--blue); }
-  .art-head { background: var(--deep); padding: 1.25rem 1.5rem; }
-  .art-tag { font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 0.4rem; }
-  .art-title { font-family: 'EB Garamond', serif; font-size: 1.25rem; font-weight: 500; color: white; line-height: 1.3; }
-  .art-body { padding: 1.25rem 1.5rem; }
-  .art-ncert { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
-  .art-body p { font-size: 0.95rem; max-width: none; }
-  .art-think { margin-top: 1rem; padding: 0.75rem 1rem; border-left: 2px solid var(--amber); font-style: italic; font-size: 0.9rem; color: var(--deep); background: rgba(212,168,67,0.06); line-height: 1.55; }
-
-  /* ── LESSONS ── */
-  .lesson-tabs { display: flex; border-bottom: 1px solid rgba(91,159,201,0.2); margin: 2rem 0 1.5rem; }
-  .lesson-tab {
-    font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase; padding: 12px 24px;
-    cursor: pointer; color: var(--muted); background: none;
-    border: none; border-bottom: 2px solid transparent; transition: all 0.2s;
-  }
-  .lesson-tab.active { color: var(--deep); border-bottom-color: var(--amber); }
-  .lesson-panel { display: none; }
-  .lesson-panel.active { display: block; }
-  .lesson-card { border: 1px solid rgba(91,159,201,0.15); background: rgba(255,255,255,0.5); padding: 1.5rem 2rem; margin-bottom: 1rem; }
-  .lesson-meta { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--sage); margin-bottom: 0.5rem; }
-  .lesson-card h3 { margin-bottom: 0.5rem; }
-  .lesson-card p { font-size: 0.95rem; max-width: none; }
-
-  /* ── BOOKS ── */
-  .books-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
-  .book-card { background: rgba(255,255,255,0.5); border: 1px solid rgba(91,159,201,0.15); padding: 1.25rem; text-align: center; transition: transform 0.2s; }
-  .book-card:hover { transform: translateY(-5px); }
-  .book-spine { width: 56px; height: 85px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; }
-  .book-spine span { color: var(--amber); font-size: 9px; font-weight: 500; text-align: center; padding: 4px; line-height: 1.35; }
-  .book-title { font-size: 0.9rem; font-weight: 500; color: var(--deep); margin-bottom: 0.25rem; }
-  .book-author { font-family: 'Raleway', sans-serif; font-size: 10px; color: var(--muted); }
-
-  /* ── STUDENT WALL ── */
-  .wall-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
-  .wall-card { background: rgba(255,255,255,0.6); border: 1px solid rgba(91,159,201,0.15); padding: 1.4rem; }
-  .wall-quote { font-style: italic; font-size: 1rem; color: var(--deep); line-height: 1.65; margin-bottom: 0.85rem; }
-  .wall-name { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
-
-  /* ── SPEAKING ── */
-  .speaking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
-  .talk-card { padding: 1.75rem; border: 1px solid rgba(91,159,201,0.15); background: rgba(255,255,255,0.5); margin-bottom: 1rem; }
-  .talk-badge { display: inline-block; font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--sage); background: rgba(143,175,132,0.12); padding: 4px 10px; margin-bottom: 0.85rem; }
-  .talk-card h3 { margin-bottom: 0.6rem; }
-  .talk-card p { font-size: 0.95rem; max-width: none; }
-  .connect-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.4rem; }
-  .connect-icon { width: 40px; height: 40px; background: rgba(91,159,201,0.1); border: 1px solid rgba(91,159,201,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-
-  /* ── INSTAGRAM ── */
-  .ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.65rem; margin-top: 2rem; }
-  .ig-card { aspect-ratio: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
-  .ig-card:hover { transform: scale(1.02); }
-  .ig-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,58,92,0.92) 0%, transparent 60%); }
-  .ig-inner { position: relative; z-index: 1; }
-  .ig-tag { font-family: 'Raleway', sans-serif; font-size: 8px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 5px; }
-  .ig-cap { font-size: 0.83rem; color: rgba(255,255,255,0.9); line-height: 1.45; }
-  .ig1 { background: linear-gradient(135deg,#1A3A5C,#2d6a4f); }
-  .ig2 { background: linear-gradient(135deg,#4a1942,#1A3A5C); }
-  .ig3 { background: linear-gradient(135deg,#1A3A5C,#7B3F00); }
-  .ig4 { background: linear-gradient(135deg,#0d3b3b,#1A3A5C); }
-  .ig5 { background: linear-gradient(135deg,#1A3A5C,#3d2b1f); }
-  .ig6 { background: linear-gradient(135deg,#2c1654,#1A3A5C); }
-
-  /* ── CONNECT ── */
-  .connect-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--deep); color: rgba(255,255,255,0.55);
-    text-align: center; padding: 2rem;
-    font-family: 'Raleway', sans-serif; font-size: 11px; letter-spacing: 1px;
-  }
-  footer strong { color: var(--amber); font-weight: 500; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    section { padding: 90px 1.5rem 3.5rem; }
-    #hero { padding: 0 1.5rem; }
-    .about-grid, .speaking-grid, .connect-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .themes-grid, .articles-grid, .wall-grid { grid-template-columns: 1fr; }
-    .books-grid { grid-template-columns: repeat(2,1fr); }
-    .ig-grid { grid-template-columns: repeat(2,1fr); }
-    .hero-title { font-size: 2.8rem; }
-    .nav-links { display: none; }
-    #atlas-section { padding-left: 1.5rem; padding-right: 1.5rem; }
-  }
+:root{--bg:#EBF4FA;--bg2:#F5FBFF;--blue:#5B9FC9;--amber:#D4A843;--sage:#8FAF84;--deep:#1A3A5C;--cloud:#F5FBFF;--muted:#5B7A95;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'EB Garamond',serif;background:linear-gradient(160deg,var(--bg) 0%,var(--bg2) 100%);background-attachment:fixed;color:var(--deep);min-height:100vh;}
+nav{position:fixed;top:0;width:100%;background:var(--deep);z-index:100;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 2rem;}
+.nav-logo{font-family:'EB Garamond',serif;font-size:18px;color:var(--amber);font-weight:500;letter-spacing:.5px;white-space:nowrap;}
+.nav-links{display:flex;list-style:none;overflow-x:auto;}
+.nav-links a{font-family:'Raleway',sans-serif;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);text-decoration:none;padding:0 10px;white-space:nowrap;transition:color .2s;}
+.nav-links a:hover{color:var(--amber);}
+section{min-height:100vh;padding:110px 4rem 5rem;max-width:1200px;margin:0 auto;}
+.section-label{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:12px;}
+h2{font-family:'EB Garamond',serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:500;line-height:1.12;color:var(--deep);margin-bottom:1rem;}
+h3{font-family:'EB Garamond',serif;font-size:1.45rem;font-weight:500;color:var(--deep);}
+p{font-size:1.1rem;line-height:1.85;color:var(--muted);max-width:680px;}
+.divider{width:60px;height:2px;background:var(--amber);margin:1.5rem 0;}
+.btn-primary{font-family:'Raleway',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:var(--deep);color:white;padding:14px 28px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s;}
+.btn-primary:hover{background:var(--blue);}
+.btn-outline{font-family:'Raleway',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:transparent;color:var(--deep);padding:14px 28px;border:1.5px solid var(--deep);cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s;}
+.btn-outline:hover{background:var(--deep);color:white;}
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 4rem;position:relative;overflow:hidden;}
+#hero::before{content:'';position:absolute;top:-120px;right:-80px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(91,159,201,.09) 0%,transparent 70%);pointer-events:none;}
+.hero-tag{font-family:'Raleway',sans-serif;font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--blue);margin-bottom:1.5rem;}
+.hero-title{font-family:'EB Garamond',serif;font-size:clamp(3.2rem,7vw,6.5rem);font-weight:500;line-height:1.04;color:var(--deep);}
+.hero-title em{color:var(--amber);font-style:italic;}
+.hero-tagline{font-family:'EB Garamond',serif;font-style:italic;font-size:1.4rem;color:var(--muted);margin:1.5rem 0 2.5rem;max-width:580px;line-height:1.6;}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:start;margin-top:3rem;}
+.about-stat{display:flex;flex-direction:column;gap:.4rem;padding:1.25rem 0;border-top:1px solid rgba(91,159,201,.2);}
+.stat-number{font-size:2.2rem;font-weight:500;color:var(--amber);line-height:1;}
+.stat-label{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.themes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem;}
+.theme-card{padding:1.75rem;border:1px solid rgba(91,159,201,.18);background:rgba(255,255,255,.5);transition:border-color .25s,transform .25s;}
+.theme-card:hover{border-color:var(--amber);transform:translateY(-4px);}
+.theme-icon{font-size:2rem;margin-bottom:.9rem;}
+.theme-card h3{font-size:1.15rem;margin-bottom:.5rem;}
+.theme-card p{font-size:.95rem;max-width:none;}
+.atlas-tabs{display:flex;border-bottom:1px solid rgba(91,159,201,.2);margin:2rem 0;}
+.atlas-tab{font-family:'Raleway',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;cursor:pointer;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;transition:all .2s;}
+.atlas-tab.active{color:var(--deep);border-bottom-color:var(--amber);}
+.atlas-map-wrap{position:relative;border:1px solid rgba(91,159,201,.15);overflow:hidden;background:#0a1628;}
+.atlas-map-wrap img{width:100%;display:block;opacity:.88;}
+.hs{position:absolute;transform:translate(-50%,-50%);cursor:pointer;}
+.hs-dot{width:14px;height:14px;border-radius:50%;border:2px solid white;position:relative;z-index:2;animation:pulse 2.2s ease-out infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(212,168,67,.55);}70%{box-shadow:0 0 0 14px rgba(212,168,67,0);}100%{box-shadow:0 0 0 0 rgba(212,168,67,0);}}
+.hs-lbl{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:var(--deep);color:white;font-family:'Raleway',sans-serif;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 8px;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none;}
+.hs:hover .hs-lbl{opacity:1;}
+.india-fallback{min-height:420px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:3rem;text-align:center;}
+.india-fallback p{color:rgba(255,255,255,.55);font-size:.95rem;max-width:380px;}
+.pop-overlay{display:none;position:fixed;inset:0;background:rgba(26,58,92,.45);z-index:149;}
+.pop-overlay.open{display:block;}
+.pop-box{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--cloud);border:1px solid var(--blue);padding:2rem;max-width:500px;width:92%;z-index:150;box-shadow:0 24px 64px rgba(26,58,92,.22);max-height:85vh;overflow-y:auto;}
+.pop-box.open{display:block;}
+.pop-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--muted);}
+.pop-tag{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:.65rem;}
+.pop-ncert{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin:.65rem 0;}
+.pop-think{margin-top:1.1rem;padding:.85rem 1rem;background:rgba(91,159,201,.07);border-left:3px solid var(--amber);font-style:italic;font-size:1rem;color:var(--deep);line-height:1.6;}
+.articles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.75rem;margin-top:3rem;}
+.art-card{border:1px solid rgba(91,159,201,.15);background:rgba(255,255,255,.55);overflow:hidden;transition:transform .25s,border-color .25s;display:flex;flex-direction:column;}
+.art-card:hover{transform:translateY(-4px);border-color:var(--blue);}
+.art-head{background:var(--deep);padding:1.25rem 1.5rem;}
+.art-tag-sm{font-family:'Raleway',sans-serif;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem;}
+.art-title-sm{font-family:'EB Garamond',serif;font-size:1.25rem;font-weight:500;color:white;line-height:1.3;}
+.art-body-sm{padding:1.25rem 1.5rem;flex:1;display:flex;flex-direction:column;}
+.art-ncert-sm{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:.75rem;}
+.art-teaser{font-size:.95rem;color:var(--muted);line-height:1.65;flex:1;max-width:none;}
+.art-footer-sm{margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(91,159,201,.15);}
+.btn-read{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:none;color:var(--deep);border:1px solid var(--deep);padding:8px 16px;cursor:pointer;transition:all .2s;width:100%;}
+.btn-read:hover{background:var(--deep);color:white;}
+.art-popup-overlay{display:none;position:fixed;inset:0;background:rgba(26,58,92,.6);z-index:199;}
+.art-popup-overlay.open{display:block;}
+.art-popup{display:none;position:fixed;inset:0;background:var(--cloud);z-index:200;flex-direction:column;overflow:hidden;}
+.art-popup.open{display:flex;}
+.art-popup-header{background:var(--deep);padding:1.25rem 2rem;display:flex;align-items:flex-start;justify-content:space-between;flex-shrink:0;}
+.ap-tag{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem;}
+.ap-title{font-family:'EB Garamond',serif;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:500;color:white;line-height:1.25;max-width:700px;}
+.art-popup-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.5rem;cursor:pointer;flex-shrink:0;margin-left:1rem;padding:0;transition:color .2s;line-height:1;}
+.art-popup-close:hover{color:white;}
+.art-popup-body{flex:1;overflow-y:auto;padding:2rem;max-width:800px;margin:0 auto;width:100%;}
+.art-popup-footer{background:rgba(235,244,250,.95);border-top:1px solid rgba(91,159,201,.2);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;flex-wrap:wrap;gap:.75rem;}
+.a-section{margin-bottom:1.75rem;}
+.a-lbl{font-family:'Raleway',sans-serif;font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem;}
+.a-section p{font-size:1.05rem;max-width:none;line-height:1.85;}
+.a-ncert{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--blue);background:rgba(91,159,201,.08);border:1px solid rgba(91,159,201,.2);padding:8px 12px;margin-bottom:1.5rem;display:inline-block;}
+.a-think{margin-top:1.5rem;padding:1.25rem 1.5rem;background:rgba(212,168,67,.07);border-left:3px solid var(--amber);font-style:italic;font-size:1.1rem;color:var(--deep);line-height:1.7;}
+.btn-lesson{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:var(--sage);color:white;border:none;padding:10px 20px;cursor:pointer;transition:background .2s;}
+.btn-lesson:hover{background:#6d9168;}
+.btn-lesson-soon{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:rgba(143,175,132,.15);color:var(--sage);border:1px solid rgba(143,175,132,.3);padding:10px 20px;cursor:default;}
+.lesson-popup{display:none;position:fixed;inset:0;background:var(--cloud);z-index:300;flex-direction:column;overflow:hidden;}
+.lesson-popup.open{display:flex;}
+.lesson-popup-header{background:var(--sage);padding:1.25rem 2rem;display:flex;align-items:flex-start;justify-content:space-between;flex-shrink:0;}
+.lp-meta{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:.4rem;}
+.lp-title{font-family:'EB Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:500;color:white;line-height:1.3;max-width:700px;}
+.lesson-popup-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.5rem;cursor:pointer;flex-shrink:0;margin-left:1rem;padding:0;line-height:1;}
+.lesson-popup-close:hover{color:white;}
+.lesson-popup-body{flex:1;overflow-y:auto;padding:2rem;max-width:800px;margin:0 auto;width:100%;}
+.lesson-popup-footer{background:rgba(143,175,132,.1);border-top:1px solid rgba(143,175,132,.3);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;flex-wrap:wrap;gap:.75rem;}
+.l-section{margin-bottom:1.5rem;}
+.l-lbl{font-family:'Raleway',sans-serif;font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);margin-bottom:.5rem;}
+.l-section p{font-size:1rem;max-width:none;line-height:1.8;}
+.l-box{background:rgba(143,175,132,.08);border:1px solid rgba(143,175,132,.25);padding:1rem 1.25rem;margin-top:.5rem;}
+.l-box p{font-size:1rem;max-width:none;line-height:1.8;}
+.l-think{margin-top:.5rem;padding:1rem 1.25rem;background:rgba(212,168,67,.07);border-left:3px solid var(--amber);font-style:italic;font-size:1rem;color:var(--deep);line-height:1.7;}
+.l-assess{background:rgba(26,58,92,.05);border:1px solid rgba(26,58,92,.1);padding:1rem 1.25rem;margin-top:.5rem;}
+.l-assess p{font-size:1rem;max-width:none;line-height:1.8;}
+.btn-back{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:none;color:var(--sage);border:1px solid var(--sage);padding:10px 20px;cursor:pointer;transition:all .2s;}
+.btn-back:hover{background:var(--sage);color:white;}
+.lesson-tabs{display:flex;border-bottom:1px solid rgba(91,159,201,.2);margin:2rem 0 1.5rem;}
+.lesson-tab{font-family:'Raleway',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;cursor:pointer;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;transition:all .2s;}
+.lesson-tab.active{color:var(--deep);border-bottom-color:var(--amber);}
+.lesson-panel{display:none;}
+.lesson-panel.active{display:block;}
+.lesson-ch-card{border:1px solid rgba(91,159,201,.15);background:rgba(255,255,255,.5);padding:1.5rem 2rem;margin-bottom:1rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;}
+.lesson-ch-meta{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--sage);margin-bottom:.5rem;}
+.lesson-ch-card h3{margin-bottom:.4rem;}
+.lesson-ch-card p{font-size:.95rem;max-width:none;}
+.lesson-ch-actions{flex-shrink:0;display:flex;align-items:center;}
+.btn-open-lesson{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:var(--deep);color:white;border:none;padding:10px 18px;cursor:pointer;white-space:nowrap;transition:background .2s;}
+.btn-open-lesson:hover{background:var(--blue);}
+.books-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:2.5rem;}
+.book-card{background:rgba(255,255,255,.5);border:1px solid rgba(91,159,201,.15);padding:1.25rem;text-align:center;transition:transform .2s;}
+.book-card:hover{transform:translateY(-5px);}
+.book-spine{width:56px;height:85px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;}
+.book-spine span{color:var(--amber);font-size:9px;font-weight:500;text-align:center;padding:4px;line-height:1.35;}
+.book-title{font-size:.9rem;font-weight:500;color:var(--deep);margin-bottom:.25rem;}
+.book-author{font-family:'Raleway',sans-serif;font-size:10px;color:var(--muted);}
+.wall-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem;}
+.wall-card{background:rgba(255,255,255,.6);border:1px solid rgba(91,159,201,.15);padding:1.4rem;}
+.wall-quote{font-style:italic;font-size:1rem;color:var(--deep);line-height:1.65;margin-bottom:.85rem;}
+.wall-name{font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.speaking-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;}
+.talk-card{padding:1.75rem;border:1px solid rgba(91,159,201,.15);background:rgba(255,255,255,.5);margin-bottom:1rem;}
+.talk-badge{display:inline-block;font-family:'Raleway',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--sage);background:rgba(143,175,132,.12);padding:4px 10px;margin-bottom:.85rem;}
+.talk-card h3{margin-bottom:.6rem;}
+.talk-card p{font-size:.95rem;max-width:none;}
+.connect-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.4rem;}
+.connect-icon{width:40px;height:40px;background:rgba(91,159,201,.1);border:1px solid rgba(91,159,201,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-top:2rem;}
+.ig-card{aspect-ratio:1;display:flex;flex-direction:column;justify-content:flex-end;padding:1rem;position:relative;overflow:hidden;cursor:pointer;transition:transform .2s;}
+.ig-card:hover{transform:scale(1.02);}
+.ig-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,58,92,.92) 0%,transparent 60%);}
+.ig-inner{position:relative;z-index:1;}
+.ig-tag{font-family:'Raleway',sans-serif;font-size:8px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:5px;}
+.ig-cap{font-size:.83rem;color:rgba(255,255,255,.9);line-height:1.45;}
+.ig1{background:linear-gradient(135deg,#1A3A5C,#2d6a4f);}
+.ig2{background:linear-gradient(135deg,#4a1942,#1A3A5C);}
+.ig3{background:linear-gradient(135deg,#1A3A5C,#7B3F00);}
+.ig4{background:linear-gradient(135deg,#0d3b3b,#1A3A5C);}
+.ig5{background:linear-gradient(135deg,#1A3A5C,#3d2b1f);}
+.ig6{background:linear-gradient(135deg,#2c1654,#1A3A5C);}
+.connect-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;}
+footer{background:var(--deep);color:rgba(255,255,255,.55);text-align:center;padding:2rem;font-family:'Raleway',sans-serif;font-size:11px;letter-spacing:1px;}
+footer strong{color:var(--amber);font-weight:500;}
+@media(max-width:900px){
+  section{padding:90px 1.5rem 3.5rem;}
+  #hero{padding:0 1.5rem;}
+  .about-grid,.speaking-grid,.connect-grid{grid-template-columns:1fr;gap:2rem;}
+  .themes-grid,.articles-grid,.wall-grid{grid-template-columns:1fr;}
+  .books-grid{grid-template-columns:repeat(2,1fr);}
+  .ig-grid{grid-template-columns:repeat(2,1fr);}
+  .hero-title{font-size:2.8rem;}
+  .nav-links{display:none;}
+  #atlas{padding-left:1.5rem!important;padding-right:1.5rem!important;}
+  .lesson-ch-card{flex-direction:column;}
+  .art-popup-body,.lesson-popup-body{padding:1.25rem;}
+  .art-popup-header,.lesson-popup-header{padding:1rem 1.25rem;}
+}
 </style>
 </head>
 <body>
-
-<!-- ── NAV ── -->
 <nav>
   <div class="nav-logo">ATS — Biology × World</div>
   <ul class="nav-links">
@@ -295,7 +193,6 @@
   </ul>
 </nav>
 
-<!-- ── HERO ── -->
 <section id="hero">
   <div class="hero-tag">Biology × Climate · War · Geopolitics · Pandemics</div>
   <h1 class="hero-title">Life Doesn't<br>Stay <em>in the Lab.</em></h1>
@@ -306,312 +203,158 @@
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
 <section id="about">
   <div class="section-label">CH01 — About</div>
   <h2>Where Biology<br>Meets the World</h2>
   <div class="divider"></div>
   <div class="about-grid">
     <div>
-      <p>I am Anubhuti T. Shukla — PGT Biology, Head of Science Department, and CBSE Subject Matter Expert based in Delhi, India. I believe that every chapter in your NCERT textbook is secretly about climate change, war, geopolitics, or a pandemic.</p>
-      <br>
-      <p>ATS — Biology × World is my attempt to break the wall between the classroom and the crisis. Between the exam and the real emergency. Between what you memorise and what you must understand to survive the 21st century.</p>
-      <br>
+      <p>I am Anubhuti T. Shukla — PGT Biology, Head of Science Department, and CBSE Subject Matter Expert based in Delhi, India. I believe that every chapter in your NCERT textbook is secretly about climate change, war, geopolitics, or a pandemic.</p><br>
+      <p>ATS — Biology × World is my attempt to break the wall between the classroom and the crisis. Between the exam and the real emergency. Between what you memorise and what you must understand to survive the 21st century.</p><br>
       <p>This space is for students who want to think deeper, teachers who want to teach wider, and anyone who believes science education should produce citizens — not just exam toppers.</p>
     </div>
     <div>
-      <div class="about-stat">
-        <span class="stat-number">15+</span>
-        <span class="stat-label">Years Teaching Biology, Delhi</span>
-      </div>
-      <div class="about-stat">
-        <span class="stat-number">X · XI · XII</span>
-        <span class="stat-label">CBSE Classes — All Levels</span>
-      </div>
-      <div class="about-stat">
-        <span class="stat-number">Systems</span>
-        <span class="stat-label">Thinking — Our Core Method</span>
-      </div>
-      <div class="about-stat">
-        <span class="stat-number">Global</span>
-        <span class="stat-label">Reach — India to the World</span>
-      </div>
+      <div class="about-stat"><span class="stat-number">15+</span><span class="stat-label">Years Teaching Biology, Delhi</span></div>
+      <div class="about-stat"><span class="stat-number">X · XI · XII</span><span class="stat-label">CBSE Classes — All Levels</span></div>
+      <div class="about-stat"><span class="stat-number">Systems</span><span class="stat-label">Thinking — Our Core Method</span></div>
+      <div class="about-stat"><span class="stat-number">Global</span><span class="stat-label">Reach — India to the World</span></div>
     </div>
   </div>
 </section>
 
-<!-- ── THEMES ── -->
 <section id="themes">
   <div class="section-label">CH02 — Themes</div>
   <h2>Six Lenses on<br>the Living World</h2>
   <div class="divider"></div>
   <p>Every article, lesson, and atlas hotspot connects biology through at least two of these systems — because no crisis ever arrives alone.</p>
   <div class="themes-grid">
-    <div class="theme-card">
-      <div class="theme-icon">🌍</div>
-      <h3>Climate & Environment</h3>
-      <p>How ecosystems collapse, species migrate, and planetary boundaries are crossed — chapter by chapter.</p>
-    </div>
-    <div class="theme-card">
-      <div class="theme-icon">⚔️</div>
-      <h3>War & Geopolitics</h3>
-      <p>Conflict destroys more than cities — it destroys food chains, water systems, and genetic diversity.</p>
-    </div>
-    <div class="theme-card">
-      <div class="theme-icon">🦠</div>
-      <h3>Pandemic & Public Health</h3>
-      <p>From zoonotic spillovers to vaccine nationalism — disease is always political.</p>
-    </div>
-    <div class="theme-card">
-      <div class="theme-icon">🌾</div>
-      <h3>Food Security</h3>
-      <p>Soil microbiomes, nitrogen cycles, GMO politics — your plate is a biology exam question in disguise.</p>
-    </div>
-    <div class="theme-card">
-      <div class="theme-icon">💧</div>
-      <h3>Water Security</h3>
-      <p>Aquifer depletion, river politics, and the biology of water stress — the next wars will be fought here.</p>
-    </div>
-    <div class="theme-card">
-      <div class="theme-icon">🧬</div>
-      <h3>Genetics & Bioethics</h3>
-      <p>CRISPR, gene drives, designer babies — who controls the code of life, and who decided they could?</p>
-    </div>
+    <div class="theme-card"><div class="theme-icon">🌍</div><h3>Climate &amp; Environment</h3><p>How ecosystems collapse, species migrate, and planetary boundaries are crossed — chapter by chapter.</p></div>
+    <div class="theme-card"><div class="theme-icon">⚔️</div><h3>War &amp; Geopolitics</h3><p>Conflict destroys more than cities — it destroys food chains, water systems, and genetic diversity.</p></div>
+    <div class="theme-card"><div class="theme-icon">🦠</div><h3>Pandemic &amp; Public Health</h3><p>From zoonotic spillovers to vaccine nationalism — disease is always political.</p></div>
+    <div class="theme-card"><div class="theme-icon">🌾</div><h3>Food Security</h3><p>Soil microbiomes, nitrogen cycles, GMO politics — your plate is a biology exam question in disguise.</p></div>
+    <div class="theme-card"><div class="theme-icon">💧</div><h3>Water Security</h3><p>Aquifer depletion, river politics, and the biology of water stress — the next wars will be fought here.</p></div>
+    <div class="theme-card"><div class="theme-icon">🧬</div><h3>Genetics &amp; Bioethics</h3><p>CRISPR, gene drives, designer babies — who controls the code of life, and who decided they could?</p></div>
   </div>
 </section>
 
-<!-- ── ATLAS ── -->
-<section id="atlas" id="atlas-section" style="max-width:100%;padding-left:4rem;padding-right:4rem;">
-  <div class="atlas-inner">
+<section id="atlas" style="max-width:100%;padding-left:4rem;padding-right:4rem;">
+  <div style="max-width:1200px;margin:0 auto;">
     <div class="section-label">CH03 — Atlas</div>
     <h2>Biology Happening<br>Right Now</h2>
     <div class="divider"></div>
     <p>Each pin marks a place where biology and world events collide. Click any hotspot to explore.</p>
-
     <div class="atlas-tabs">
       <button class="atlas-tab active" onclick="switchAtlas('world',this)">World Atlas</button>
       <button class="atlas-tab" onclick="switchAtlas('india',this)">India Atlas</button>
     </div>
-
-    <!-- WORLD MAP -->
     <div id="map-world" class="atlas-map-wrap">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Whole_world_-_land_and_oceans_12000.jpg/1280px-Whole_world_-_land_and_oceans_12000.jpg" alt="World political map" loading="lazy">
-      <div class="hs" style="left:28%;top:68%;" onclick="openPop('amazon')">
-        <div class="hs-dot" style="background:var(--amber);"></div>
-        <div class="hs-lbl">Amazon</div>
-      </div>
-      <div class="hs" style="left:50%;top:9%;" onclick="openPop('arctic')">
-        <div class="hs-dot" style="background:var(--blue);"></div>
-        <div class="hs-lbl">Arctic</div>
-      </div>
-      <div class="hs" style="left:81%;top:72%;" onclick="openPop('reef')">
-        <div class="hs-dot" style="background:var(--sage);"></div>
-        <div class="hs-lbl">Great Barrier Reef</div>
-      </div>
-      <div class="hs" style="left:56%;top:28%;" onclick="openPop('ukraine')">
-        <div class="hs-dot" style="background:#e8c86a;"></div>
-        <div class="hs-lbl">Ukraine</div>
-      </div>
-      <div class="hs" style="left:68%;top:48%;" onclick="openPop('ganges')">
-        <div class="hs-dot" style="background:var(--sage);"></div>
-        <div class="hs-lbl">Ganges Delta</div>
-      </div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Whole_world_-_land_and_oceans_12000.jpg/1280px-Whole_world_-_land_and_oceans_12000.jpg" alt="World map" loading="lazy">
+      <div class="hs" style="left:28%;top:68%;" onclick="openPop('amazon')"><div class="hs-dot" style="background:var(--amber);"></div><div class="hs-lbl">Amazon</div></div>
+      <div class="hs" style="left:50%;top:9%;" onclick="openPop('arctic')"><div class="hs-dot" style="background:var(--blue);"></div><div class="hs-lbl">Arctic</div></div>
+      <div class="hs" style="left:81%;top:72%;" onclick="openPop('reef')"><div class="hs-dot" style="background:var(--sage);"></div><div class="hs-lbl">Great Barrier Reef</div></div>
+      <div class="hs" style="left:56%;top:28%;" onclick="openPop('ukraine')"><div class="hs-dot" style="background:#e8c86a;"></div><div class="hs-lbl">Ukraine</div></div>
+      <div class="hs" style="left:68%;top:48%;" onclick="openPop('ganges')"><div class="hs-dot" style="background:var(--sage);"></div><div class="hs-lbl">Ganges Delta</div></div>
     </div>
-
-    <!-- INDIA MAP -->
     <div id="map-india" class="atlas-map-wrap" style="display:none;">
-      <img src="india_map.png" alt="India map" loading="lazy"
-           onerror="this.style.display='none';document.getElementById('india-fb').style.display='flex'">
-      <div id="india-fb" class="india-fallback" style="display:none;">
-        <div class="section-label" style="color:rgba(255,255,255,0.5);">India Atlas</div>
-        <p>Upload <strong style="color:var(--amber);">india_map.jpg</strong> to the repository root to activate this map with hotspots across the subcontinent.</p>
-      </div>
-      <div class="hs" style="left:42%;top:22%;" onclick="openPop('himalaya')">
-        <div class="hs-dot" style="background:var(--blue);"></div>
-        <div class="hs-lbl">Himalayan Glaciers</div>
-      </div>
-      <div class="hs" style="left:54%;top:45%;" onclick="openPop('gangesplain')">
-        <div class="hs-dot" style="background:var(--sage);"></div>
-        <div class="hs-lbl">Gangetic Plain</div>
-      </div>
-      <div class="hs" style="left:36%;top:72%;" onclick="openPop('westernghats')">
-        <div class="hs-dot" style="background:var(--amber);"></div>
-        <div class="hs-lbl">Western Ghats</div>
-      </div>
+      <img src="india_map.png" alt="India map" loading="lazy" onerror="this.style.display='none';document.getElementById('india-fb').style.display='flex'">
+      <div id="india-fb" class="india-fallback" style="display:none;"><div class="section-label" style="color:rgba(255,255,255,.5);">India Atlas</div><p>Upload <strong style="color:var(--amber);">india_map.png</strong> to the repository root to activate this map.</p></div>
+      <div class="hs" style="left:42%;top:22%;" onclick="openPop('himalaya')"><div class="hs-dot" style="background:var(--blue);"></div><div class="hs-lbl">Himalayan Glaciers</div></div>
+      <div class="hs" style="left:54%;top:45%;" onclick="openPop('gangesplain')"><div class="hs-dot" style="background:var(--sage);"></div><div class="hs-lbl">Gangetic Plain</div></div>
+      <div class="hs" style="left:36%;top:72%;" onclick="openPop('westernghats')"><div class="hs-dot" style="background:var(--amber);"></div><div class="hs-lbl">Western Ghats</div></div>
     </div>
   </div>
 </section>
 
-<!-- POPUP -->
 <div class="pop-overlay" id="popOverlay" onclick="closePop()"></div>
 <div class="pop-box" id="popBox">
   <button class="pop-close" onclick="closePop()">✕</button>
   <div class="pop-tag" id="pTag"></div>
-  <h3 id="pTitle" style="margin-bottom:0.65rem;font-size:1.4rem;"></h3>
+  <h3 id="pTitle" style="margin-bottom:.65rem;font-size:1.4rem;"></h3>
   <div class="pop-ncert" id="pNcert"></div>
   <p id="pBody" style="font-size:1rem;max-width:none;line-height:1.75;"></p>
   <div class="pop-think" id="pThink"></div>
 </div>
 
-<!-- ── ARTICLES ── -->
 <section id="articles">
   <div class="section-label">CH04 — Articles</div>
   <h2>Biology Stories<br>From the Headlines</h2>
   <div class="divider"></div>
-  <div class="articles-grid">
-
-    <div class="art-card">
-      <div class="art-head">
-        <div class="art-tag">Ecosystems × Politics</div>
-        <div class="art-title">Why Your Lungs Are Paying India's Pollution Tax</div>
-      </div>
-      <div class="art-body">
-        <div class="art-ncert">📚 Class XI Ch.17 — Breathing & Exchange of Gases | Class XII Ch.16 — Environmental Issues</div>
-        <p>Every winter, stubble burning in Punjab and Haryana turns the Gangetic plain into a gas chamber. When PM2.5 spikes above 500 µg/m³, your alveoli are doing Chapter 17 in real time — except the NCERT exam doesn't ask who is responsible for the damage.</p>
-        <div class="art-think">💭 If farmers burning stubble are the proximate cause of Delhi's air crisis, what is the ultimate cause — and who should pay to fix it?</div>
-      </div>
-    </div>
-
-    <div class="art-card">
-      <div class="art-head">
-        <div class="art-tag">Water × War</div>
-        <div class="art-title">The War That Killed a River: Biology of the Euphrates</div>
-      </div>
-      <div class="art-body">
-        <div class="art-ncert">📚 Class XII Ch.14 — Ecosystem | Ch.16 — Environmental Issues</div>
-        <p>The Euphrates — cradle of civilisation — is running dry. Wars in Syria and Iraq, Turkish dams upstream, and climate change have reduced its flow by 40%. The aquatic biomes your textbook describes are collapsing. This is Chapter 14 with blood on its hands.</p>
-        <div class="art-think">💭 When a river crosses borders, who owns its water — and what happens to the biology of every nation downstream when one nation dams it?</div>
-      </div>
-    </div>
-
-    <div class="art-card">
-      <div class="art-head">
-        <div class="art-tag">Genetics × Ethics</div>
-        <div class="art-title">The Baby Was Edited: CRISPR and the Line We Just Crossed</div>
-      </div>
-      <div class="art-body">
-        <div class="art-ncert">📚 Class XII Ch.6 — Molecular Basis of Inheritance | Ch.11 — Biotechnology: Principles</div>
-        <p>In 2018, a Chinese scientist edited the germline of two human embryos. The twin girls carry permanent genetic changes that will pass to their children. Your textbook calls this "gene therapy." The rest of the world calls it a line that should never have been crossed.</p>
-        <div class="art-think">💭 If germline editing can eliminate hereditary disease, what moral authority do we have to ban it — and what happens if only the wealthy can afford it?</div>
-      </div>
-    </div>
-
-    <div class="art-card">
-      <div class="art-head">
-        <div class="art-tag">Pandemic × Immunity</div>
-        <div class="art-title">What COVID Left in Our Cells: The Long Haul Biology</div>
-      </div>
-      <div class="art-body">
-        <div class="art-ncert">📚 Class XII Ch.8 — Human Health & Disease | Ch.9 — Strategies for Enhancement</div>
-        <p>Four years after COVID, millions of people still cannot walk up a flight of stairs. The virus left viral RNA in immune cells, reprogrammed T-cell populations, and created auto-antibodies attacking the body's own tissues. The chapter ends. The suffering does not.</p>
-        <div class="art-think">💭 If a government declares a pandemic over but millions of its citizens are biologically still in it — whose definition of "over" should we believe?</div>
-      </div>
-    </div>
-
-  </div>
+  <p>Read as a science enthusiast. If you are a teacher, each article carries a lesson plan built for your classroom — find the green button inside.</p>
+  <div class="articles-grid" id="articlesGrid"></div>
 </section>
 
-<!-- ── LESSONS ── -->
+<div class="art-popup-overlay" id="artOverlay" onclick="closeArticle()"></div>
+<div class="art-popup" id="artPopup">
+  <div class="art-popup-header">
+    <div><div class="ap-tag" id="apTag"></div><div class="ap-title" id="apTitle"></div></div>
+    <button class="art-popup-close" onclick="closeArticle()">✕</button>
+  </div>
+  <div class="art-popup-body" id="apBody"></div>
+  <div class="art-popup-footer">
+    <span style="font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">ATS — Biology × World</span>
+    <button class="btn-lesson-soon" id="apLessonBtn">📚 Lesson Plan for Teachers</button>
+  </div>
+</div>
+
+<div class="lesson-popup" id="lessonPopup">
+  <div class="lesson-popup-header">
+    <div><div class="lp-meta" id="lpMeta"></div><div class="lp-title" id="lpTitle"></div></div>
+    <button class="lesson-popup-close" onclick="closeLesson()">✕</button>
+  </div>
+  <div class="lesson-popup-body" id="lpBody"></div>
+  <div class="lesson-popup-footer">
+    <button class="btn-back" onclick="closeLesson()">← Back</button>
+    <span style="font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--sage);">ATS Lesson Plans — Biology × World</span>
+  </div>
+</div>
+
 <section id="lessons">
   <div class="section-label">CH05 — Lessons</div>
   <h2>Teaching Biology<br>as a World Event</h2>
   <div class="divider"></div>
-  <p>Lesson plans that connect NCERT chapters to global crises — designed to produce systems thinkers, not exam machines.</p>
-
+  <p>Every lesson plan here is paired with a full article. Teachers get the classroom framework — students get the world context. Neither works without the other.</p>
   <div class="lesson-tabs">
     <button class="lesson-tab active" onclick="switchLesson('cbse',this)">CBSE Lessons</button>
     <button class="lesson-tab" onclick="switchLesson('global',this)">Global Lessons</button>
   </div>
-
   <div id="lesson-cbse" class="lesson-panel active">
-    <div class="lesson-card">
-      <div class="lesson-meta">Class XII · Chapter 15 — Biodiversity · 2 Periods</div>
-      <h3>Species Extinction as Political Crisis</h3>
-      <p>Students analyse the IUCN Red List alongside UN biodiversity treaty failures. Real-world hook: India's cheetah reintroduction programme. Activity: Debate — should extinction be treated as a crime against humanity?</p>
-    </div>
-    <div class="lesson-card">
-      <div class="lesson-meta">Class XI · Chapter 22 — Chemical Coordination · 2 Periods</div>
-      <h3>Hormones, Plastics & the Endocrine Disruption Crisis</h3>
-      <p>Connects the endocrine system to the global microplastics crisis. Real-world hook: declining global sperm counts. Activity: Case study analysis of BPA, phthalates, and regulatory failure across three countries.</p>
-    </div>
-    <div class="lesson-card">
-      <div class="lesson-meta">Class X · Chapter 5 — Life Processes · 1 Period</div>
-      <h3>Photosynthesis and the Politics of Carbon</h3>
-      <p>From the light reaction to carbon markets — who profits from trees absorbing CO₂? Real-world hook: Amazon deforestation credits sold to corporations. Activity: Role play as nations negotiating at COP.</p>
-    </div>
+    <div class="lesson-ch-card"><div style="flex:1"><div class="lesson-ch-meta">Class XI/XII · Ch.17 &amp; Ch.16 — Respiratory System &amp; Environment · 2 Periods</div><h3>Air Pollution as Political Crisis</h3><p>Why does Delhi choke every winter — and who is biologically responsible? Students map PM2.5 from stubble fire to alveolus to policy failure.</p></div><div class="lesson-ch-actions"><button class="btn-open-lesson" onclick="openLesson('pollution')">Open Lesson Plan →</button></div></div>
+    <div class="lesson-ch-card"><div style="flex:1"><div class="lesson-ch-meta">Class XII · Ch.14 &amp; Ch.16 — Ecosystem &amp; Environment · 2 Periods</div><h3>When War Kills a River: The Euphrates</h3><p>Connecting aquatic biome collapse to geopolitical conflict. Who controls the river — and what biology dies when one nation dams it?</p></div><div class="lesson-ch-actions"><button class="btn-open-lesson" onclick="openLesson('euphrates')">Open Lesson Plan →</button></div></div>
+    <div class="lesson-ch-card"><div style="flex:1"><div class="lesson-ch-meta">Class XII · Ch.6 — Molecular Basis of Inheritance · 2 Periods</div><h3>The Day the Central Dogma Cracked</h3><p>From Crick's 1958 declaration to Drt3b's 2026 discovery — charting every crack in the most important rule in molecular biology.</p></div><div class="lesson-ch-actions"><button class="btn-open-lesson" onclick="openLesson('dogma')">Open Lesson Plan →</button></div></div>
+    <div class="lesson-ch-card"><div style="flex:1"><div class="lesson-ch-meta">Class XII · Ch.6 &amp; Ch.11 — Molecular Biology &amp; Biotechnology · 2 Periods</div><h3>Drt3b: From Bacteria to Biotechnology</h3><p>CRISPR was found in bacteria and became a Nobel Prize. Drt3b was just found in 2026. Students map the pathway from discovery to application.</p></div><div class="lesson-ch-actions"><button class="btn-open-lesson" onclick="openLesson('drt3b')">Open Lesson Plan →</button></div></div>
+    <div class="lesson-ch-card"><div style="flex:1"><div class="lesson-ch-meta">Class XII · Ch.5 &amp; Ch.6 — Inheritance &amp; Molecular Biology · 3 Periods</div><h3>Your Mother's Mitochondria: Maternal Inheritance &amp; Three-Parent Babies</h3><p>Tracing the unbroken maternal thread from Mitochondrial Eve to the UK's three-parent baby controversy to India's invisible mitochondrial disease crisis.</p></div><div class="lesson-ch-actions"><button class="btn-open-lesson" onclick="openLesson('mito')">Open Lesson Plan →</button></div></div>
   </div>
-
   <div id="lesson-global" class="lesson-panel">
-    <div class="lesson-card">
-      <div class="lesson-meta">Global · IB / IGCSE Compatible · 3 Periods</div>
-      <h3>Antibiotic Resistance as a Geopolitical Problem</h3>
-      <p>Why pharmaceutical companies stopped developing new antibiotics — and what that means for global health security. Students map the economic incentive failure and propose policy solutions from a biology foundation.</p>
-    </div>
-    <div class="lesson-card">
-      <div class="lesson-meta">Global · All Curricula · 2 Periods</div>
-      <h3>The Biology of Famine: Why People Starve When Food Exists</h3>
-      <p>Connects cellular respiration and nutrition to the political economy of food systems. Students analyse the 2022 Horn of Africa famine against global food export data — and ask who decided where the grain went.</p>
-    </div>
-    <div class="lesson-card">
-      <div class="lesson-meta">Global · Climate Focus · 2 Periods</div>
-      <h3>The Coral Reef as a Climate Witness</h3>
-      <p>Using Great Barrier Reef bleaching data, students reconstruct the biology of symbiosis breakdown and connect it to national emissions data. Which countries caused the bleaching? Which countries suffer most from it?</p>
-    </div>
+    <div class="lesson-ch-card"><div style="flex:1"><div class="lesson-ch-meta">Global · IB / IGCSE Compatible · 3 Periods</div><h3>Antibiotic Resistance as a Geopolitical Problem</h3><p>Why pharmaceutical companies stopped developing new antibiotics — and what that means for global health security.</p></div><div class="lesson-ch-actions"><span class="btn-lesson-soon">Coming Soon</span></div></div>
+    <div class="lesson-ch-card"><div style="flex:1"><div class="lesson-ch-meta">Global · All Curricula · 2 Periods</div><h3>The Biology of Famine: Why People Starve When Food Exists</h3><p>Connects cellular respiration and nutrition to the political economy of food systems and the 2022 Horn of Africa crisis.</p></div><div class="lesson-ch-actions"><span class="btn-lesson-soon">Coming Soon</span></div></div>
+    <div class="lesson-ch-card"><div style="flex:1"><div class="lesson-ch-meta">Global · Climate Focus · 2 Periods</div><h3>The Coral Reef as a Climate Witness</h3><p>Using Great Barrier Reef bleaching data, students reconstruct the biology of symbiosis breakdown and connect it to national emissions.</p></div><div class="lesson-ch-actions"><span class="btn-lesson-soon">Coming Soon</span></div></div>
   </div>
 </section>
 
-<!-- ── BOOKS ── -->
 <section id="books">
   <div class="section-label">CH07 — Books</div>
   <h2>The Reading List That<br>Changed How I Teach</h2>
   <div class="divider"></div>
   <p>These are the books that taught me biology is never just biology.</p>
   <div class="books-grid">
-    <div class="book-card">
-      <div class="book-spine" style="background:#1A3A5C;"><span>The Sixth Extinction</span></div>
-      <div class="book-title">The Sixth Extinction</div>
-      <div class="book-author">Elizabeth Kolbert</div>
-    </div>
-    <div class="book-card">
-      <div class="book-spine" style="background:#2d6a4f;"><span>Entangled Life</span></div>
-      <div class="book-title">Entangled Life</div>
-      <div class="book-author">Merlin Sheldrake</div>
-    </div>
-    <div class="book-card">
-      <div class="book-spine" style="background:#7B3F00;"><span>The Code Breaker</span></div>
-      <div class="book-title">The Code Breaker</div>
-      <div class="book-author">Walter Isaacson</div>
-    </div>
-    <div class="book-card">
-      <div class="book-spine" style="background:#4a1942;"><span>Spillover</span></div>
-      <div class="book-title">Spillover</div>
-      <div class="book-author">David Quammen</div>
-    </div>
+    <div class="book-card"><div class="book-spine" style="background:#1A3A5C;"><span>The Sixth Extinction</span></div><div class="book-title">The Sixth Extinction</div><div class="book-author">Elizabeth Kolbert</div></div>
+    <div class="book-card"><div class="book-spine" style="background:#2d6a4f;"><span>Entangled Life</span></div><div class="book-title">Entangled Life</div><div class="book-author">Merlin Sheldrake</div></div>
+    <div class="book-card"><div class="book-spine" style="background:#7B3F00;"><span>The Code Breaker</span></div><div class="book-title">The Code Breaker</div><div class="book-author">Walter Isaacson</div></div>
+    <div class="book-card"><div class="book-spine" style="background:#4a1942;"><span>Spillover</span></div><div class="book-title">Spillover</div><div class="book-author">David Quammen</div></div>
   </div>
 </section>
 
-<!-- ── STUDENT WALL ── -->
 <section id="wall">
   <div class="section-label">CH08 — Student Wall</div>
   <h2>When Students<br>Start Asking Why</h2>
   <div class="divider"></div>
   <div class="wall-grid">
-    <div class="wall-card">
-      <div class="wall-quote">"I used to memorise photosynthesis. Now I see it in every climate negotiation. My board exam answer was three pages long."</div>
-      <div class="wall-name">Priya S. · Class XII · Delhi</div>
-    </div>
-    <div class="wall-card">
-      <div class="wall-quote">"The lesson on antibiotic resistance made me change my career choice. I want to work in global health policy now."</div>
-      <div class="wall-name">Aryan M. · Class XI · Noida</div>
-    </div>
-    <div class="wall-card">
-      <div class="wall-quote">"I asked my mother why India exports food when people are hungry. She said that's politics. I said — no, that's biology."</div>
-      <div class="wall-name">Riya K. · Class X · Gurgaon</div>
-    </div>
+    <div class="wall-card"><div class="wall-quote">"I used to memorise photosynthesis. Now I see it in every climate negotiation. My board exam answer was three pages long."</div><div class="wall-name">Priya S. · Class XII · Delhi</div></div>
+    <div class="wall-card"><div class="wall-quote">"The lesson on antibiotic resistance made me change my career choice. I want to work in global health policy now."</div><div class="wall-name">Aryan M. · Class XI · Noida</div></div>
+    <div class="wall-card"><div class="wall-quote">"I asked my mother why India exports food when people are hungry. She said that's politics. I said — no, that's biology."</div><div class="wall-name">Riya K. · Class X · Gurgaon</div></div>
   </div>
 </section>
 
-<!-- ── SPEAKING ── -->
 <section id="speaking">
   <div class="section-label">CH09 — Speaking</div>
   <h2>Taking Biology<br>Beyond the Classroom</h2>
@@ -619,231 +362,171 @@
   <p>Available for conferences, school events, TEDx talks, and educator training programmes — in India and internationally.</p>
   <div class="speaking-grid">
     <div>
-      <div class="talk-card">
-        <div class="talk-badge">Signature Talk</div>
-        <h3>Teaching the Apocalypse: Why Biology Class Must Change</h3>
-        <p>A call to science educators everywhere: our students are inheriting a planet in crisis. Are we preparing them to understand it — or just to pass an exam?</p>
-      </div>
-      <div class="talk-card">
-        <div class="talk-badge">Educator Workshop</div>
-        <h3>Systems Thinking in the Biology Classroom</h3>
-        <p>A hands-on session for teachers — how to connect any NCERT chapter to a global crisis in under 10 minutes, without leaving the syllabus.</p>
-      </div>
-      <div class="talk-card">
-        <div class="talk-badge">Student Session</div>
-        <h3>Your Textbook Is a Newspaper: Reading Biology as Current Events</h3>
-        <p>For Class X–XII students — a session that rewires how you read your NCERT chapters and turns exam prep into world-awareness.</p>
-      </div>
+      <div class="talk-card"><div class="talk-badge">Signature Talk</div><h3>Teaching the Apocalypse: Why Biology Class Must Change</h3><p>A call to science educators everywhere: our students are inheriting a planet in crisis. Are we preparing them to understand it — or just to pass an exam?</p></div>
+      <div class="talk-card"><div class="talk-badge">Educator Workshop</div><h3>Systems Thinking in the Biology Classroom</h3><p>A hands-on session for teachers — how to connect any NCERT chapter to a global crisis in under 10 minutes, without leaving the syllabus.</p></div>
+      <div class="talk-card"><div class="talk-badge">Student Session</div><h3>Your Textbook Is a Newspaper</h3><p>For Class X–XII students — a session that rewires how you read your NCERT chapters and turns exam prep into world-awareness.</p></div>
     </div>
     <div>
       <p style="margin-bottom:2rem;">To invite Anubhuti to speak, write to <strong style="color:var(--blue);">lifebeyondthelab@gmail.com</strong> with the event name, date, format, and audience.</p>
-      <div class="connect-item">
-        <div class="connect-icon">📍</div>
-        <div>
-          <div class="stat-label" style="margin-bottom:4px;">Based In</div>
-          <p style="font-size:0.95rem;max-width:none;">Delhi, India — available to travel internationally</p>
-        </div>
-      </div>
-      <div class="connect-item">
-        <div class="connect-icon">🎯</div>
-        <div>
-          <div class="stat-label" style="margin-bottom:4px;">Best For</div>
-          <p style="font-size:0.95rem;max-width:none;">Science education conferences, TEDx events, IB/CBSE teacher training, student leadership summits</p>
-        </div>
-      </div>
-      <div class="connect-item">
-        <div class="connect-icon">🌐</div>
-        <div>
-          <div class="stat-label" style="margin-bottom:4px;">Format</div>
-          <p style="font-size:0.95rem;max-width:none;">In-person (preferred) or virtual — keynote, panel, workshop</p>
-        </div>
-      </div>
+      <div class="connect-item"><div class="connect-icon">📍</div><div><div class="stat-label" style="margin-bottom:4px;">Based In</div><p style="font-size:.95rem;max-width:none;">Delhi, India — available to travel internationally</p></div></div>
+      <div class="connect-item"><div class="connect-icon">🎯</div><div><div class="stat-label" style="margin-bottom:4px;">Best For</div><p style="font-size:.95rem;max-width:none;">Science education conferences, TEDx events, IB/CBSE teacher training, student leadership summits</p></div></div>
+      <div class="connect-item"><div class="connect-icon">🌐</div><div><div class="stat-label" style="margin-bottom:4px;">Format</div><p style="font-size:.95rem;max-width:none;">In-person (preferred) or virtual — keynote, panel, workshop</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ── INSTAGRAM ── -->
 <section id="instagram">
   <div class="section-label">CH10 — Instagram</div>
   <h2>Biology in<br>60 Seconds</h2>
   <div class="divider"></div>
-  <p>Follow <strong>@lifebeyondthelab</strong> — where every post connects a biology concept to a world event that your textbook forgot to mention.</p>
+  <p>Follow <strong>@lifebeyondthelab</strong> — where every post connects a biology concept to a world event your textbook forgot to mention.</p>
   <div class="ig-grid">
-    <div class="ig-card ig1">
-      <div class="ig-inner">
-        <div class="ig-tag">Ecosystems × Climate</div>
-        <div class="ig-cap">The Amazon produces 20% of Earth's oxygen. Brazil just approved more of it to be cleared for farming. Who gave them permission to decide that? #LifeBeyondTheLab</div>
-      </div>
-    </div>
-    <div class="ig-card ig2">
-      <div class="ig-inner">
-        <div class="ig-tag">Genetics × Ethics</div>
-        <div class="ig-cap">CRISPR can edit sickle cell disease out of an embryo. In 10 years, only the wealthy will be able to afford perfect genes. Class XII Ch.11 does not tell you that. #LifeBeyondTheLab</div>
-      </div>
-    </div>
-    <div class="ig-card ig3">
-      <div class="ig-inner">
-        <div class="ig-tag">Water × Geopolitics</div>
-        <div class="ig-cap">The Euphrates is dying. 40% less water. Three wars. One dam. The aquatic biome your textbook describes no longer exists. #LifeBeyondTheLab</div>
-      </div>
-    </div>
-    <div class="ig-card ig4">
-      <div class="ig-inner">
-        <div class="ig-tag">Immunity × Policy</div>
-        <div class="ig-cap">Governments declared COVID over. Millions of immune systems didn't get the memo. Who defines when a pandemic ends — the politician or the pathogen? #LifeBeyondTheLab</div>
-      </div>
-    </div>
-    <div class="ig-card ig5">
-      <div class="ig-inner">
-        <div class="ig-tag">Food × Systems</div>
-        <div class="ig-cap">India exports wheat while 190 million Indians are food insecure. The biology of food is simple. The politics of food is not. #LifeBeyondTheLab</div>
-      </div>
-    </div>
-    <div class="ig-card ig6">
-      <div class="ig-inner">
-        <div class="ig-tag">Biodiversity × Law</div>
-        <div class="ig-cap">One species goes extinct every 20 minutes. The UN has a treaty for this. No country has ever lost a seat for breaking it. #LifeBeyondTheLab</div>
-      </div>
-    </div>
+    <div class="ig-card ig1"><div class="ig-inner"><div class="ig-tag">Ecosystems × Climate</div><div class="ig-cap">The Amazon produces 20% of Earth's oxygen. Brazil approved more of it to be cleared. Who gave them permission to decide that? #LifeBeyondTheLab</div></div></div>
+    <div class="ig-card ig2"><div class="ig-inner"><div class="ig-tag">Molecular Biology × Discovery</div><div class="ig-cap">A protein called Drt3b just built DNA with no template. The Central Dogma ran biology for 70 years. In April 2026, it cracked. #LifeBeyondTheLab</div></div></div>
+    <div class="ig-card ig3"><div class="ig-inner"><div class="ig-tag">Water × Geopolitics</div><div class="ig-cap">The Euphrates is dying. 40% less water. Three wars. One dam. The aquatic biome your textbook describes no longer exists. #LifeBeyondTheLab</div></div></div>
+    <div class="ig-card ig4"><div class="ig-inner"><div class="ig-tag">Genetics × Maternal Lineage</div><div class="ig-cap">Your mother is in every cell you have. 37 genes. 16,569 base pairs. Inherited only through her. An unbroken thread back 150,000 years. #LifeBeyondTheLab</div></div></div>
+    <div class="ig-card ig5"><div class="ig-inner"><div class="ig-tag">Food × Systems</div><div class="ig-cap">India exports wheat while 190 million Indians are food insecure. The biology of food is simple. The politics of food is not. #LifeBeyondTheLab</div></div></div>
+    <div class="ig-card ig6"><div class="ig-inner"><div class="ig-tag">Immunity × Policy</div><div class="ig-cap">Governments declared COVID over. 400 million immune systems didn't get the memo. Who defines when a pandemic ends? #LifeBeyondTheLab</div></div></div>
   </div>
-  <div style="text-align:center;margin-top:2.5rem;">
-    <a href="https://instagram.com/lifebeyondthelab" target="_blank" class="btn-primary">Follow @lifebeyondthelab ↗</a>
-  </div>
+  <div style="text-align:center;margin-top:2.5rem;"><a href="https://instagram.com/lifebeyondthelab" target="_blank" class="btn-primary">Follow @lifebeyondthelab ↗</a></div>
 </section>
 
-<!-- ── CONNECT ── -->
 <section id="connect">
   <div class="section-label">CH11 — Connect</div>
   <h2>Let's Build This<br>Together</h2>
   <div class="divider"></div>
   <div class="connect-grid">
     <div>
-      <p>Whether you are a student, a teacher, a conference organiser, or someone who believes biology education needs to change — write to me.</p>
-      <br>
-      <div class="connect-item">
-        <div class="connect-icon">✉</div>
-        <div>
-          <div class="stat-label" style="margin-bottom:4px;">Email</div>
-          <p style="font-size:1rem;max-width:none;color:var(--blue);">lifebeyondthelab@gmail.com</p>
-        </div>
-      </div>
-      <div class="connect-item">
-        <div class="connect-icon">📸</div>
-        <div>
-          <div class="stat-label" style="margin-bottom:4px;">Instagram</div>
-          <p style="font-size:1rem;max-width:none;color:var(--blue);">@lifebeyondthelab</p>
-        </div>
-      </div>
-      <div class="connect-item">
-        <div class="connect-icon">🌐</div>
-        <div>
-          <div class="stat-label" style="margin-bottom:4px;">Website</div>
-          <p style="font-size:1rem;max-width:none;color:var(--blue);">lifebeyondthelab.github.io/lifebeyondthelab</p>
-        </div>
-      </div>
+      <p>Whether you are a student, a teacher, a conference organiser, or someone who believes biology education needs to change — write to me.</p><br>
+      <div class="connect-item"><div class="connect-icon">✉</div><div><div class="stat-label" style="margin-bottom:4px;">Email</div><p style="font-size:1rem;max-width:none;color:var(--blue);">lifebeyondthelab@gmail.com</p></div></div>
+      <div class="connect-item"><div class="connect-icon">📸</div><div><div class="stat-label" style="margin-bottom:4px;">Instagram</div><p style="font-size:1rem;max-width:none;color:var(--blue);">@lifebeyondthelab</p></div></div>
+      <div class="connect-item"><div class="connect-icon">🌐</div><div><div class="stat-label" style="margin-bottom:4px;">Website</div><p style="font-size:1rem;max-width:none;color:var(--blue);">lifebeyondthelab.github.io/lifebeyondthelab</p></div></div>
     </div>
     <div>
-      <p style="margin-bottom:2rem;">Are you a student with a "Think About It" answer? A teacher who tried one of these lessons? A researcher who spotted something new? Tell me.</p>
-      <p style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.35rem;color:var(--deep);line-height:1.65;border-left:3px solid var(--amber);padding-left:1.25rem;">"The most dangerous biology student is the one who stopped asking why at the lab door. Don't be that student."</p>
-      <br>
+      <p style="margin-bottom:2rem;">Are you a student with a Think About It answer? A teacher who tried one of these lessons? Write to me.</p>
+      <p style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.35rem;color:var(--deep);line-height:1.65;border-left:3px solid var(--amber);padding-left:1.25rem;">"The most dangerous biology student is the one who stopped asking why at the lab door. Don't be that student."</p><br>
       <p style="font-family:'Raleway',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">— Anubhuti T. Shukla · Delhi, India</p>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
 <footer>
   <p><strong>ATS — Biology × World</strong> &nbsp;·&nbsp; Built by Anubhuti T. Shukla, Delhi &nbsp;·&nbsp; <strong>Life Doesn't Stay in the Lab</strong></p>
-  <p style="margin-top:0.5rem;opacity:0.45;">lifebeyondthelab@gmail.com &nbsp;·&nbsp; @lifebeyondthelab</p>
+  <p style="margin-top:.5rem;opacity:.45;">lifebeyondthelab@gmail.com &nbsp;·&nbsp; @lifebeyondthelab</p>
 </footer>
 
 <script>
-const hotspots = {
-  amazon: {
-    tag:'Ecosystems × Politics · Brazil',
-    title:'Amazon Deforestation',
-    ncert:'📚 Class XII — Chapter 15: Biodiversity and Conservation',
-    body:'The Amazon has lost over 17% of its forest cover in 50 years — and the Brazilian government has approved further clearing for agriculture. The biodiversity hotspot your textbook describes is being dismantled by political decision. Over 10,000 species found nowhere else on Earth are at immediate risk.',
-    think:'💭 If a country legally destroys a biodiversity hotspot within its own borders, does the rest of the world have the right to stop it?'
-  },
-  arctic: {
-    tag:'Climate × Ecosystems · Arctic Circle',
-    title:'Arctic Ice Collapse',
-    ncert:'📚 Class XII — Chapter 16: Environmental Issues | Class XI — Chapter 18: Body Fluids & Circulation',
-    body:'Arctic sea ice is melting four times faster than the global average. The albedo feedback loop — where less ice means more heat absorption, which means less ice — is a systems concept from your ecosystem chapter. Polar bears, narwhals, and indigenous communities are living the graph your textbook draws.',
-    think:'💭 The nations most responsible for Arctic ice loss are the least affected by it — is there a biological principle that explains why injustice always travels downhill?'
-  },
-  reef: {
-    tag:'Marine Biology × Climate · Australia',
-    title:'Great Barrier Reef Bleaching',
-    ncert:'📚 Class XII — Chapter 14: Ecosystem | Chapter 15: Biodiversity and Conservation',
-    body:"The Great Barrier Reef has experienced mass bleaching events in 2016, 2017, 2020, 2022, and 2024. Coral bleaching occurs when ocean temperatures rise just 1°C above the summer maximum, expelling the zooxanthellae algae that feed the coral. A mutualistic relationship your textbook describes — severed by emissions from 10,000 kilometres away.",
-    think:'💭 When a natural wonder dies because of emissions produced by countries that have never seen it, who is responsible — and who should pay for the loss?'
-  },
-  ukraine: {
-    tag:'Food Systems × War · Ukraine / Russia',
-    title:'The War That Broke the Food Chain',
-    ncert:'📚 Class XI — Chapter 12: Mineral Nutrition | Chapter 13: Photosynthesis | Class XII — Chapter 16',
-    body:"Ukraine and Russia together produce 30% of the world's wheat and 80% of its sunflower oil. When Russia invaded Ukraine in 2022, it didn't just start a war — it broke the global food chain. The nitrogen cycle that feeds your crops, the phosphorus that moves through your food web, are now geopolitical weapons.",
-    think:'💭 If one country\'s war can starve millions in Africa and Asia, does food security belong in biology class — or in international security law?'
-  },
-  ganges: {
-    tag:'Water × Public Health · South Asia',
-    title:'Ganges Delta: Biology Under Pressure',
-    ncert:'📚 Class X — Chapter 3: Life Processes | Class XII — Chapter 8: Human Health & Disease',
-    body:'The Ganges-Brahmaputra delta supports 400 million people — the most densely populated river delta on Earth. Rising sea levels, arsenic contamination, and upstream damming are collectively threatening the aquatic biology and public health of an entire civilisation. Your Class XII chapter on waterborne diseases begins here.',
-    think:'💭 If rising seas swallow the Ganges delta within 50 years, where will 400 million climate refugees go — and does biology education have any responsibility to prepare us for that question?'
-  },
-  himalaya: {
-    tag:'Glaciology × Water Security · India',
-    title:'Himalayan Glaciers: The Third Pole',
-    ncert:'📚 Class XII — Chapter 16: Environmental Issues | Class X — Chapter 3: Life Processes',
-    body:"The Himalayas hold the largest concentration of ice outside the polar regions — feeding 10 major Asian rivers including the Ganga, Brahmaputra, and Indus. Glaciers are retreating at 40cm per year. When they are gone, the rivers flood in monsoon and run dry in summer. Your textbook calls it the water cycle. Scientists call it a countdown.",
-    think:'💭 India\'s water security depends on glaciers melting because of emissions from countries that do not share our rivers — is there a legal framework that addresses this, and should there be?'
-  },
-  gangesplain: {
-    tag:'Agriculture × Soil Biology · India',
-    title:'The Gangetic Plain: Feeding a Billion',
-    ncert:'📚 Class XI — Chapter 12: Mineral Nutrition | Class XII — Chapter 16: Environmental Issues',
-    body:"The Indo-Gangetic Plain is one of the most agriculturally productive regions on Earth — and one of the most ecologically stressed. Decades of green revolution agriculture have depleted soil microbiome diversity, lowered groundwater tables by 50cm per year in Punjab, and created chemical dependency across farming communities.",
-    think:'💭 If modern agriculture can feed a billion people today but destroys the soil that will need to feed two billion in 2050, what is the true cost of the food on your plate?'
-  },
-  westernghats: {
-    tag:'Biodiversity × Policy · India',
-    title:'Western Ghats: A Hotspot Under Threat',
-    ncert:'📚 Class XII — Chapter 15: Biodiversity and Conservation',
-    body:"The Western Ghats are one of Earth's eight hottest biodiversity hotspots — home to 5,000 species of flowering plants, 139 mammal species, and 508 bird species, most found nowhere else. The Gadgil Committee recommended protecting 64% of the region. The government accepted 37%. The mines moved in.",
-    think:'💭 When a government-commissioned scientific report is rejected because it inconveniences industry — at what point does science education become political education?'
-  }
+const hotspots={
+  amazon:{tag:'Ecosystems × Politics · Brazil',title:'Amazon Deforestation',ncert:'📚 Class XII — Chapter 15: Biodiversity and Conservation',body:'The Amazon has lost over 17% of its forest cover in 50 years. Over 10,000 species found nowhere else on Earth are at immediate risk as the Brazilian government approves further agricultural clearing.',think:'💭 If a country legally destroys a biodiversity hotspot within its own borders, does the rest of the world have the right to stop it?'},
+  arctic:{tag:'Climate × Ecosystems · Arctic Circle',title:'Arctic Ice Collapse',ncert:'📚 Class XII — Chapter 16: Environmental Issues',body:'Arctic sea ice is melting four times faster than the global average. The albedo feedback loop — where less ice means more heat absorption — is a systems concept from your NCERT ecosystem chapter, playing out in real time.',think:'💭 The nations most responsible for Arctic ice loss are the least affected by it — is there a biological principle that explains why injustice always travels downhill?'},
+  reef:{tag:'Marine Biology × Climate · Australia',title:'Great Barrier Reef Bleaching',ncert:'📚 Class XII — Chapter 14: Ecosystem | Chapter 15: Biodiversity',body:'The Great Barrier Reef has experienced mass bleaching events in 2016, 2017, 2020, 2022, and 2024. Coral bleaching occurs when ocean temperatures rise just 1°C above the summer maximum, expelling the zooxanthellae algae that feed the coral.',think:'💭 When a natural wonder dies because of emissions from countries that have never seen it, who is responsible — and who pays?'},
+  ukraine:{tag:'Food Systems × War · Ukraine / Russia',title:'The War That Broke the Food Chain',ncert:'📚 Class XI — Chapter 12: Mineral Nutrition | Class XII — Chapter 16',body:'Ukraine and Russia together produce 30% of the world\'s wheat. When Russia invaded Ukraine in 2022, it broke the global food chain. The nitrogen cycle that feeds your crops became a geopolitical weapon.',think:'💭 If one country\'s war can starve millions in Africa and Asia, does food security belong in biology class — or in international security law?'},
+  ganges:{tag:'Water × Public Health · South Asia',title:'Ganges Delta: Biology Under Pressure',ncert:'📚 Class X — Chapter 3: Life Processes | Class XII — Chapter 8: Human Health',body:'The Ganges-Brahmaputra delta supports 400 million people. Rising sea levels, arsenic contamination, and upstream damming collectively threaten the aquatic biology and public health of an entire civilisation.',think:'💭 If rising seas swallow the Ganges delta within 50 years, where will 400 million climate refugees go?'},
+  himalaya:{tag:'Glaciology × Water Security · India',title:'Himalayan Glaciers: The Third Pole',ncert:'📚 Class XII — Chapter 16: Environmental Issues',body:'The Himalayas feed 10 major Asian rivers. Glaciers are retreating at 40cm per year. When they are gone, the rivers flood in monsoon and run dry in summer.',think:'💭 India\'s water security depends on glaciers melting because of emissions from countries that don\'t share our rivers — is there a legal framework for this?'},
+  gangesplain:{tag:'Agriculture × Soil Biology · India',title:'The Gangetic Plain: Feeding a Billion',ncert:'📚 Class XI — Chapter 12: Mineral Nutrition',body:'Decades of green revolution agriculture have depleted soil microbiome diversity and lowered groundwater tables by 50cm per year in Punjab, creating chemical dependency across farming communities.',think:'💭 If modern agriculture feeds a billion today but destroys the soil that must feed two billion in 2050, what is the true cost of the food on your plate?'},
+  westernghats:{tag:'Biodiversity × Policy · India',title:'Western Ghats: A Hotspot Under Threat',ncert:'📚 Class XII — Chapter 15: Biodiversity and Conservation',body:'The Western Ghats are home to 5,000 species of flowering plants found nowhere else. The Gadgil Committee recommended protecting 64% of the region. The government accepted 37%. The mines moved in.',think:'💭 When a government-commissioned scientific report is rejected because it inconveniences industry — at what point does science education become political education?'}
 };
 
-function openPop(id) {
-  const h = hotspots[id]; if (!h) return;
-  document.getElementById('pTag').textContent = h.tag;
-  document.getElementById('pTitle').textContent = h.title;
-  document.getElementById('pNcert').textContent = h.ncert;
-  document.getElementById('pBody').textContent = h.body;
-  document.getElementById('pThink').textContent = h.think;
+const ARTICLES={
+  pollution:{tag:'Ecosystems × Politics',title:"Why Your Lungs Are Paying India's Pollution Tax",ncert:'📚 Class XI Ch.17 — Breathing &amp; Exchange of Gases | Class XII Ch.16 — Environmental Issues',teaser:"Every winter, Delhi chokes. The biology of what happens inside your alveoli when PM2.5 spikes above 500 µg/m³ is your NCERT Chapter 17 in real time — except the exam doesn't ask who is responsible.",lessonId:'pollution',content:`<div class="a-section"><div class="a-lbl">Hook</div><p>Every winter, stubble burning in Punjab and Haryana turns the Gangetic plain into a gas chamber. When PM2.5 spikes above 500 µg/m³ across Delhi, 33 million people breathe air that is clinically classified as hazardous. Your school stays open. Your lungs do not have a holiday.</p></div><div class="a-section"><div class="a-lbl">Biology Concept</div><p>PM2.5 particles — 2.5 micrometres or smaller — bypass the mucociliary escalator in your respiratory tract entirely. They penetrate deep into the alveoli, where gas exchange happens. There, they trigger an inflammatory response: macrophages attempt to engulf the particles and fail, releasing cytokines that thicken the alveolar membrane. Gas exchange efficiency drops. Prolonged exposure causes irreversible fibrosis — the alveolar walls scar over. This is Class XI Chapter 17. Except the chapter ends after the diagram. The scarring does not.</p></div><div class="a-ncert">📚 Class XI Ch.17 — Breathing &amp; Exchange of Gases | Class XII Ch.16 — Environmental Issues</div><div class="a-section"><div class="a-lbl">Real World Connection</div><p>In October and November 2024, Delhi recorded AQI above 400 for 23 consecutive days. Schools shifted online. Hospitals reported a 35% spike in respiratory admissions. The Central Pollution Control Board identified stubble burning as the primary contributor — a practice farmers continue because they have no affordable alternative to clear fields before the next planting season. The biology is happening in 33 million bodies. The cause is in a different state. The solution requires a different ministry. The exam asks you to label the trachea.</p></div><div class="a-section"><div class="a-lbl">Historical Example</div><p>In December 1952, the Great Smog of London killed an estimated 12,000 people in five days. The cause was coal burning combined with still air. The government initially denied the deaths were smog-related. The Clean Air Act followed in 1956 — four years after the bodies were counted. Delhi is running the same experiment, 70 years later, without the Act.</p></div><div class="a-section"><div class="a-lbl">Systems Thinking</div><p>The pollution chain runs from agricultural policy — minimum support price structures that incentivise rice cultivation — to labour economics (stubble burning is the cheapest field-clearing method) to urban planning (Delhi's geography creates an air basin that traps particulates) to health infrastructure (government hospitals overwhelmed each winter). Each system feeds the next. The alveolus at the end of the chain has no vote in any of them.</p></div><div class="a-section"><div class="a-lbl">Citizen Awareness</div><p>The next time you wear an N95 mask in Delhi winter, understand what you are doing: compensating with personal equipment for a systems failure that began in a government subsidy structure. The mask is not the solution. It is the evidence that the solution has not arrived.</p></div><div class="a-think">💭 If farmers burning stubble are the proximate cause of Delhi's air crisis, what is the ultimate cause — and who should pay to fix it?</div>`},
+  euphrates:{tag:'Water × War',title:'The War That Killed a River: Biology of the Euphrates',ncert:'📚 Class XII Ch.14 — Ecosystem | Ch.16 — Environmental Issues',teaser:"The Euphrates — cradle of civilisation — is running dry. Wars, dams, and climate change have reduced its flow by 40%. The aquatic biomes your textbook describes are collapsing in real time.",lessonId:'euphrates',content:`<div class="a-section"><div class="a-lbl">Hook</div><p>The Euphrates River has sustained human civilisation for 10,000 years. It is the river where writing was invented, where the first cities rose, where the Code of Hammurabi was written. In 2024, sections of it ran dry for the first time in recorded history. Nobody declared an emergency.</p></div><div class="a-section"><div class="a-lbl">Biology Concept</div><p>Rivers are not just water — they are ecosystems with defined trophic levels, nutrient cycling pathways, and interdependent species communities. The Euphrates supports riparian vegetation that anchors soil, phytoplankton that form the base of aquatic food chains, fish species that feed millions, and migratory birds that use it as a corridor. When river flow drops by 40%, the food web does not thin gracefully — it collapses from the bottom. The phytoplankton crash first. Then the invertebrates. Then the fish. Then the communities that ate them. This is Chapter 14 — energy flow and food chains — with blood on its hands.</p></div><div class="a-ncert">📚 Class XII Ch.14 — Ecosystem | Ch.16 — Environmental Issues</div><div class="a-section"><div class="a-lbl">Real World Connection</div><p>Turkey's Southeastern Anatolia Project — 22 dams and 19 hydroelectric plants on the Euphrates and Tigris — has reduced downstream flow to Syria and Iraq by up to 60% in dry years. The Syrian civil war beginning in 2011 was partly triggered by a catastrophic drought that destroyed agricultural livelihoods — intensified by upstream water diversion. Iraq's marshes, once the largest wetland ecosystem in the Middle East, have lost 90% of their area since 1970. The Marsh Arabs — a civilisation that lived on those wetlands for 5,000 years — no longer exist as a community.</p></div><div class="a-section"><div class="a-lbl">Historical Example</div><p>The Aral Sea — once the world's fourth-largest lake — was reduced to 10% of its original size by Soviet irrigation projects between 1960 and 2000. The fishing industry that supported 40,000 people collapsed completely. The exposed seabed became a salt desert that generates toxic dust storms affecting communities hundreds of kilometres away. The Euphrates is the Aral Sea in slow motion.</p></div><div class="a-section"><div class="a-lbl">Systems Thinking</div><p>The Euphrates connects agricultural policy in Turkey, energy development in the Kurdish regions, civil war in Syria, oil politics in Iraq, climate change from global emissions, and the food security of 50 million people — all through the movement of water. Remove the water and every system downstream destabilises simultaneously. India has 14 major river systems shared with neighbouring countries. The Brahmaputra flows from China. The treaties governing these rivers were written before the climate crisis changed their flow.</p></div><div class="a-section"><div class="a-lbl">Citizen Awareness</div><p>A biology student who understands river ecosystems is better equipped to understand why India's water treaties need to be renegotiated — now. The Euphrates is not a foreign story. It is a preview.</p></div><div class="a-think">💭 When a river crosses borders, who owns its water — and what happens to the biology of every nation downstream when one nation dams it?</div>`},
+  dogma:{tag:'Molecular Biology × Discovery',title:'The Rule That Ran Biology for 70 Years Just Broke',ncert:'📚 Class XII Ch.6 — Molecular Basis of Inheritance | Ch.11 — Biotechnology',teaser:"In 1958, Francis Crick declared the Central Dogma: DNA makes RNA makes Protein. One direction. No exceptions. In April 2026, Stanford University found the exception — inside your gut bacteria.",lessonId:'dogma',content:`<div class="a-section"><div class="a-lbl">Hook</div><p>In 1958, Francis Crick declared the Central Dogma of molecular biology: DNA makes RNA makes Protein. One direction. No exceptions. Carved into every NCERT textbook since. Taught in every classroom from Delhi to Helsinki. In April 2026, a team at Stanford University found a bacterial protein that builds DNA with no template, no blueprint, no rulebook. The dogma did not bend. It broke.</p></div><div class="a-section"><div class="a-lbl">Biology Concept</div><p>The Central Dogma states that genetic information flows in one direction: DNA → RNA → Protein. Class XII Chapter 6 teaches this as the foundation of everything. The entire logic of DNA replication rests on one rule — you need a template. A parent strand. Something to copy from. DNA Polymerase reads the existing strand and builds the new one by complementary base pairing. No template, no DNA. That was the law. Until Drt3b — a protein found inside ordinary E. coli bacteria that builds DNA using its own three-dimensional shape as the mould. No nucleic acid template. No external reference. The protein structure itself is the blueprint.</p></div><div class="a-ncert">📚 Class XII Ch.6 — Molecular Basis of Inheritance | Ch.11 — Biotechnology: Principles and Processes</div><div class="a-section"><div class="a-lbl">Real World Connection</div><p>The DRT3 system — Defence-associated Reverse Transcriptase 3 — is a bacterial immune system found in E. coli and thousands of other bacterial species worldwide. It comprises two enzymes (Drt3a and Drt3b) and a non-coding RNA. Drt3a behaves normally, reading an RNA template. Drt3b was the bombshell — it synthesises DNA using its own protein architecture as a guide. Published in Science journal, April 2026. Every drug designed to block DNA replication, every CRISPR edit, every cancer therapy targeting polymerases — all built on the assumption that DNA synthesis requires a template. That assumption is now incomplete.</p></div><div class="a-section"><div class="a-lbl">Historical Example</div><p>The Central Dogma survived its first major challenge in the 1970s when Howard Temin discovered reverse transcriptase — RNA flowing backwards into DNA in retroviruses. Crick revised the model. But Temin's discovery still required a template — just an RNA one. Drt3b requires no template at all. This is not a revision. This is a new chapter that nobody had imagined existed — hiding in the gut bacteria of every human being on Earth.</p></div><div class="a-section"><div class="a-lbl">Systems Thinking</div><p>If bacteria have been quietly building template-free DNA to fight viruses — and this mechanism is widespread across thousands of species — two questions immediately arise. First: do our own cells have similar hidden mechanisms not yet discovered? Second: could viruses evolve to hijack this mechanism in ways our immune system has never learned to recognise? The pharmaceutical industry, worth $1.48 trillion and built on the Central Dogma, is running on an incomplete map.</p></div><div class="a-section"><div class="a-lbl">Citizen Awareness</div><p>The Central Dogma is not wrong — it is incomplete. Which is how science works. Drt3b existed in E. coli bacteria — the same organism in your gut right now — long before any human being knew it was there. Biology does not wait for our permission to be more complex than we imagined.</p></div><div class="a-think">💭 If a fundamental rule of molecular biology was incomplete for 70 years and the exception was hiding in common gut bacteria all along — what does that tell us about how confidently we should teach anything in science as absolute fact?</div>`},
+  drt3b:{tag:'Molecular Biology × Biotechnology',title:'Drt3b: The Protein That Builds DNA From Nothing',ncert:'📚 Class XII Ch.6 — Molecular Basis of Inheritance | Ch.11 — Biotechnology',teaser:"Every biology student knows that to build DNA, you need DNA. A template. A parent strand. That rule is older than the internet. In April 2026, a protein called Drt3b quietly made it obsolete.",lessonId:'drt3b',content:`<div class="a-section"><div class="a-lbl">Hook</div><p>Every biology student knows that to build DNA, you need DNA. You need a template, a parent strand, something to copy. That rule is older than the internet, older than most nations' constitutions. In April 2026, a protein called Drt3b — found inside ordinary E. coli bacteria — quietly made it obsolete.</p></div><div class="a-section"><div class="a-lbl">Biology Concept</div><p>DNA synthesis requires a template — this is the central assumption of molecular biology. DNA Polymerase reads the existing strand and adds complementary nucleotides: A pairs with T, G pairs with C. This is Class XII Chapter 6. What the exam will not tell you is that Drt3b, a reverse transcriptase discovered in 2026, uses its own three-dimensional protein shape as the mould. Not the nucleic acid sequence — the shape of the protein itself encodes the instruction. The protein IS the blueprint. This is the first time science has ever observed this mechanism in DNA synthesis.</p></div><div class="a-ncert">📚 Class XII Ch.6 — Molecular Basis of Inheritance | Ch.11 — Biotechnology: Principles and Processes | Ch.8 — Human Health and Disease</div><div class="a-section"><div class="a-lbl">Real World Connection</div><p>The DRT3 system exists across thousands of bacterial species worldwide. This template-free DNA synthesis has been happening constantly — in bacteria everywhere on Earth — for possibly billions of years. We discovered it in April 2026. The mechanism appears to produce long stretches of repetitive DNA that act as molecular sponges during viral attack. The bacteria have been running this defence protocol since long before multicellular life existed. We were simply not looking for it.</p></div><div class="a-section"><div class="a-lbl">Historical Example</div><p>CRISPR was also discovered inside bacterial immune systems. Scientists first noticed it in bacteria in 1987. They ignored it for decades. In 2012, Jennifer Doudna and Emmanuelle Charpentier realised it could edit any genome on Earth. Nobel Prize in Chemistry 2020. The pattern is consistent: bacterial immune systems are biology's most creative engineers. Drt3b may be the next CRISPR moment.</p></div><div class="a-section"><div class="a-lbl">Systems Thinking</div><p>If Drt3b can synthesise specific DNA sequences using only protein structure as a template — with no nucleic acid blueprint — the implications for biotechnology are profound. Current synthetic biology requires knowing the precise DNA sequence you want to build. Drt3b suggests there may be a completely different grammar for writing genetic information — one encoded in protein geometry rather than nucleotide sequence. This could reshape drug delivery, cancer diagnostics, and synthetic biology.</p></div><div class="a-section"><div class="a-lbl">Citizen Awareness</div><p>The bacteria in your gut have been running biochemical experiments for 3.5 billion years. Every time science looks closely at what they have figured out, we discover tools we did not know were possible. Drt3b is not just a new protein. It is evidence that our molecular biology textbooks describe one version of how life works — and life has been quietly running other versions in parallel the whole time.</p></div><div class="a-think">💭 CRISPR was a bacterial immune trick that became a Nobel Prize-winning technology worth billions — if Drt3b follows the same path, who should own the patent on a mechanism that bacteria invented 3.5 billion years ago?</div>`},
+  mito:{tag:'Genetics × Gender × Evolution',title:'Your Mother Is in Every Cell You Have. And She Always Will Be.',ncert:'📚 Class XII Ch.5 — Inheritance | Ch.6 — Molecular Basis | Class XI Ch.8 — Cell',teaser:"Your father gave you half your DNA. Your mother gave you that — and something older, stranger, more fundamental. They came entirely from her. They will pass entirely to your daughters. Your sons carry them — and then the line ends.",lessonId:'mito',content:`<div class="a-section"><div class="a-lbl">Hook</div><p>Your father gave you half your DNA. Your mother gave you that — and something older, stranger, and more fundamental than any chromosome. Tucked inside every single one of your 37 trillion cells are ancient structures with their own separate DNA, their own separate genome, their own 3.5 billion year history. They came entirely from your mother. They will pass entirely to your daughters. Your sons will carry them their whole lives — and then the line ends. This is not mythology. This is mitochondrial inheritance.</p></div><div class="a-section"><div class="a-lbl">Biology Concept</div><p>Mitochondria are the powerhouses of the cell — Class XI Chapter 8, the sentence every student writes and forgets. But mitochondria are endosymbionts — ancient free-living bacteria that merged with early eukaryotic cells over 1.5 billion years ago and never fully became part of us. They kept their own genome: 37 genes, 16,569 base pairs, circular like a bacterial chromosome. This mitochondrial DNA (mtDNA) is inherited exclusively through the maternal line. During fertilisation, the sperm's mitochondria are tagged with a protein called ubiquitin the moment they enter the egg. The egg's cellular machinery recognises the tag and destroys them. Deliberately. Completely. Only the mother's mitochondria survive.</p></div><div class="a-ncert">📚 Class XII — Ch.5: Principles of Inheritance | Ch.6: Molecular Basis of Inheritance | Class XI — Ch.8: Cell: The Unit of Life</div><div class="a-section"><div class="a-lbl">How Many Mitochondria Per Cell?</div><p>Not one — hundreds to thousands, depending on the cell's energy demands. A liver cell carries 1,000 to 2,000. A heart muscle cell carries up to 5,000 — heart cells never rest, so they need constant ATP. A red blood cell carries zero — it shed its mitochondria to make more room for haemoglobin. And the egg cell? Up to 100,000 mitochondria — more than any other cell in the human body. This is why maternal mitochondrial inheritance is so absolute. The sperm's approximately 100 mitochondria power the tail for the swim — and are destroyed the moment they arrive.</p></div><div class="a-section"><div class="a-lbl">Heteroplasmy — The Hidden Complication</div><p>Most cells carry a uniform population of mitochondrial DNA — all copies identical. But some people carry two populations simultaneously: one healthy, one mutated. This is called heteroplasmy. Disease does not appear until the mutant mitochondria cross a threshold — typically 60 to 80 percent of the total population. Below that threshold, the healthy mitochondria compensate. This is why two sisters can inherit the same mutation from the same mother, and one develops severe neurological disease while the other lives completely normally — depending on which mitochondrial population won the numbers game in their particular cells during development.</p></div><div class="a-section"><div class="a-lbl">Mitochondrial Diseases</div><p>MELAS causes strokes in children. MERRF causes epilepsy and progressive muscle deterioration. Leigh Syndrome destroys neurological function in infants and is often fatal before age three. LHON strips central vision from young adults suddenly and permanently. Kearns-Sayre Syndrome affects the heart and eyelids before age twenty. POLG Syndrome causes liver failure and neurological decline. All of them maternal. All of them inherited from a mother who may show no symptoms at all.</p></div><div class="a-section"><div class="a-lbl">Famous People</div><p>Prince Frederik of Luxembourg — diagnosed with POLG Syndrome at fourteen — died in March 2025, aged just 22, having spent his final years building the POLG Foundation to fund research into the disease that was killing him. Researchers now believe Charles Darwin himself carried a mitochondrial mutation — MELAS — that caused the mysterious, debilitating illness that plagued him throughout his adult life. Mattie Stepanek, a poet and peace advocate with dysautonomic mitochondrial myopathy, published five poetry collections before dying at age 13. Rocco Baldelli, a Major League Baseball star, retired at 29 because of mitochondrial channelopathy — his body could no longer play even when his talent had not diminished.</p></div><div class="a-section"><div class="a-lbl">The India Angle</div><p>In the West, mitochondrial disease has famous faces. In India, it has no famous face at all — not because it does not exist here, but because the 70 million Indians living with rare genetic diseases rarely reach a diagnosis. A child in Delhi with unexplained muscle weakness, seizures, and developmental delay is statistically far more likely to be told it is something else — malnutrition, a neurological quirk — than to receive a mitochondrial genetics workup. The disease is here. The name for it is not.</p></div><div class="a-section"><div class="a-lbl">The Three-Parent Baby</div><p>In 2015, the United Kingdom became the first country to legalise mitochondrial replacement therapy — where a donor egg's mitochondria replace a mother's defective ones, while the mother's nuclear DNA is preserved. The child receives nuclear DNA from both parents and mitochondrial DNA from the donor: 37 genes from a third person. The tabloids called it a three-parent baby. The scientists called it a life saved. The ethicists called it a line crossed. The debate has expanded globally, while remaining completely inaccessible to the vast majority of women who carry mitochondrial mutations.</p></div><div class="a-section"><div class="a-lbl">Mitochondrial Eve</div><p>In 1987, scientists at UC Berkeley traced all living humans back through the maternal line to a single woman who lived in Africa approximately 150,000 to 200,000 years ago. They named her Mitochondrial Eve — not because she was the only woman alive, but because she is the only woman from whom an unbroken maternal line survives to every living human today. You carry her mitochondria right now. They are generating the ATP that is keeping you alive as you read this.</p></div><div class="a-section"><div class="a-lbl">Citizen Awareness</div><p>The next time someone tells you that genetics is 50% from mum and 50% from dad — correct them. Your father gave you half your nuclear DNA. Your mother gave you that, and the ancient bacterial engines that run every cell in your body, and the entire history of every woman who came before her. That is not sentiment. That is molecular biology hiding in Chapter 8 — the powerhouse of the cell — the whole time.</p></div><div class="a-think">💭 If mitochondrial DNA passes only through the maternal line — making mothers the sole carriers of cellular energy inheritance, disease transmission, and the entire traceable history of the human species — why does almost every patrilineal society on Earth treat the father's genetic contribution as the primary and more important one?</div>`},
+  crisprBaby:{tag:'Genetics × Ethics',title:'The Baby Was Edited: CRISPR and the Line We Just Crossed',ncert:'📚 Class XII Ch.6 — Molecular Basis | Ch.11 — Biotechnology',teaser:"In 2018, a Chinese scientist edited the germline of two human embryos. The twin girls carry permanent genetic changes that will pass to their children. Your textbook calls this gene therapy. The world calls it a line that should never have been crossed.",lessonId:null,content:`<div class="a-section"><div class="a-lbl">Hook</div><p>In November 2018, He Jiankui — a Chinese biophysicist — announced the birth of twin girls whose germline DNA had been edited using CRISPR-Cas9. Lulu and Nana were born with modifications to the CCR5 gene, intended to confer resistance to HIV. The global scientific community responded with near-unanimous condemnation. He Jiankui was sentenced to three years in prison. The girls are now children growing up with genetic changes that will be in every cell of their bodies — and every cell of their future children's bodies — forever.</p></div><div class="a-section"><div class="a-lbl">Biology Concept</div><p>Germline editing means editing the DNA of an embryo — changes that appear in every cell of the resulting organism and are passed to all future generations. This is fundamentally different from somatic gene therapy, which affects only a living individual. CRISPR-Cas9 uses a guide RNA to locate a specific DNA sequence and a Cas9 protein — a molecular scissors — to cut it. The CCR5 gene codes for a protein on white blood cell surfaces that HIV uses as an entry point. Disabling it theoretically prevents HIV infection — but CCR5 also plays roles in immune response to other infections, including West Nile virus.</p></div><div class="a-ncert">📚 Class XII Ch.6 — Molecular Basis of Inheritance | Ch.11 — Biotechnology: Principles and Processes</div><div class="a-section"><div class="a-lbl">Real World Connection</div><p>He Jiankui's experiment was conducted without proper ethical oversight, on embryos whose parents were not fully informed of the risks, to address a condition — HIV — for which safe, effective preventive treatments already existed. The scientific objections were numerous: off-target edits, mosaicism (some cells edited, others not), and unknown long-term effects. The deeper concern was the precedent: if germline editing can be done in secret, it will be done. The question is no longer whether it is possible. It is who controls it — and who benefits.</p></div><div class="a-section"><div class="a-lbl">Systems Thinking</div><p>Germline editing sits at the intersection of molecular biology, medical ethics, reproductive rights, global inequality, and evolutionary biology. If the technology is perfected, it will first be available to the wealthy — creating a world where genetic advantage is purchasable. We are editing the human germline with tools we have had for a decade, for consequences that will persist for generations.</p></div><div class="a-think">💭 If germline editing can eliminate hereditary disease, what moral authority do we have to ban it — and what happens if only the wealthy can access it?</div>`},
+  covid:{tag:'Pandemic × Immunity',title:"What COVID Left in Our Cells: The Long Haul Biology",ncert:'📚 Class XII Ch.8 — Human Health &amp; Disease | Ch.9 — Strategies for Enhancement',teaser:"Four years after COVID, millions of people still cannot walk up a flight of stairs. The virus reprogrammed T-cell populations and created auto-antibodies. The chapter ends. The suffering does not.",lessonId:null,content:`<div class="a-section"><div class="a-lbl">Hook</div><p>Governments declared COVID-19 over. The World Health Organization ended the Public Health Emergency of International Concern in May 2023. But as of 2024, an estimated 400 million people worldwide live with Long COVID — a condition where the body continues to experience symptoms months or years after the acute infection resolved. Your immune system did not get the memo that the pandemic was over.</p></div><div class="a-section"><div class="a-lbl">Biology Concept</div><p>The SARS-CoV-2 virus primarily targets ACE2 receptors — found on cells throughout the body including the lungs, heart, kidneys, gut, and brain. Class XII Chapter 8 describes the immune response: B cells produce antibodies, T cells destroy infected cells, memory cells persist for future protection. But in Long COVID, something goes wrong with the off-switch. Research has identified multiple mechanisms: viral RNA persisting in gut cells months after negative tests; reactivation of Epstein-Barr virus triggered by COVID; microclots forming in capillaries restricting oxygen delivery; and auto-antibodies disrupting everything from the autonomic nervous system to hormone production.</p></div><div class="a-ncert">📚 Class XII Ch.8 — Human Health &amp; Disease | Ch.9 — Strategies for Enhancement in Food Production</div><div class="a-section"><div class="a-lbl">Real World Connection</div><p>Long COVID disproportionately affects women — research suggests oestrogen may influence the autoimmune mechanisms involved. It disproportionately affects people who had mild initial infections — the severity of the acute illness does not predict long-term damage. It has removed an estimated 1.1 million workers from the US labour force alone. In India, Long COVID remains largely unmeasured — there is no national registry, no diagnostic protocol, and no treatment pathway in the public health system.</p></div><div class="a-section"><div class="a-lbl">Systems Thinking</div><p>The decision to declare a pandemic over is political — made by governments with economic pressures, not by immune systems with biological ones. The biology of Long COVID tells us that pandemic endings are not announcements. They are processes. And the process is still happening in hundreds of millions of bodies worldwide, largely invisible to the systems designed to count it.</p></div><div class="a-think">💭 If a government declares a pandemic over but millions of its citizens are biologically still in it — whose definition of "over" should we believe?</div>`}
+};
+
+const LESSONS={
+  pollution:{meta:'Class XI/XII · Ch.17 & Ch.16 · 2 Periods',title:'Air Pollution as Political Crisis',hook:'Open with real-time Delhi AQI data from the previous winter. Show students the AQI reading for the day their school shifted to online classes — if it did. Ask: what is the biology of that number?',ncert:'Respiratory system anatomy (Ch.17): nasal passage, trachea, bronchi, alveoli, gaseous exchange mechanism. Environmental pollution (Ch.16): particulate matter, PM2.5 definition, health effects, industrial and agricultural sources.',connection:'Stubble burning in Punjab generates PM2.5 that reaches Delhi 300km away. Particles below 2.5 micrometres bypass the mucociliary escalator and embed in alveolar tissue, triggering inflammatory responses that — with chronic exposure — cause irreversible fibrosis. Students map the particle journey from field to alveolus.',activity:'SYSTEMS MAP: Students draw a diagram connecting — minimum support price policy → rice cultivation incentive → stubble burning → PM2.5 generation → atmospheric transport → alveolar damage → hospital admissions → school closures. At each arrow, they identify which institution or government department is responsible. Final question: where would you intervene if you had one policy rupee to spend?',think:"💭 If farmers burning stubble are the proximate cause of Delhi's air crisis, what is the ultimate cause — and who should pay to fix it?",assessment:"Students write a 200-word policy brief addressed to the Chief Minister of Delhi, using specific biological evidence — alveolar damage mechanism, PM2.5 penetration depth, inflammatory response — to argue for one specific policy intervention. No intervention that blames farmers without addressing their economic constraints will be accepted."},
+  euphrates:{meta:'Class XII · Ch.14 & Ch.16 · 2 Periods',title:'When War Kills a River: The Euphrates',hook:'Show students a satellite image of the Euphrates in 1984 vs 2024. Ask them to describe what changed. Then ask: what biology died in that difference?',ncert:'Ecosystem structure and function (Ch.14): food chains, food webs, trophic levels, energy flow, nutrient cycling. Environmental issues (Ch.16): water pollution, aquatic ecosystem degradation, international environmental law.',connection:"Turkey's 22 dams have reduced Euphrates flow to Syria and Iraq by up to 60% in dry years. Reduced flow raises water temperature, lowers dissolved oxygen, concentrates pollutants, eliminates riparian vegetation, collapses phytoplankton populations, and cascades up the food chain. Students trace the collapse trophic level by trophic level.",activity:'UN WATER COUNCIL ROLEPLAY: Divide the class into five groups — Turkey, Syria, Iraq, environmental scientists, and international law representatives. Each group prepares a 3-minute statement using biological evidence. Turkey argues development rights. Syria argues survival rights. Iraq argues ecosystem rights. Scientists present food web collapse data. International law identifies which treaties apply. Class votes on a resolution — then the teacher reveals that no binding agreement currently exists.',think:'💭 When a river crosses borders, who owns its water — and what happens to the biology of every nation downstream when one nation dams it?',assessment:'Students select one species in the Euphrates food web and write its "species diary" — a first-person account of the ecosystem changes over the last 40 years, using accurate biological data about the species\' role in the food web and how it has been affected by flow reduction.'},
+  dogma:{meta:'Class XII · Ch.6 · 2 Periods',title:'The Day the Central Dogma Cracked',hook:'Write on the board: DNA → RNA → Protein. Ask: has anyone ever questioned this? Then show the April 2026 headline: "Scientists stunned by fundamentally new way life produces DNA." Let the room sit with that for 30 seconds.',ncert:'Molecular Basis of Inheritance (Ch.6): DNA structure, replication mechanism, template-dependent synthesis, role of DNA Polymerase, RNA transcription, translation, Central Dogma. Biotechnology (Ch.11): reverse transcriptase, genetic engineering principles.',connection:'Drt3b, discovered April 2026 at Stanford University, builds DNA using its own protein structure as a template — no nucleic acid template required. The DRT3 system is widespread across bacterial species — it has been operating in bacteria throughout evolutionary history, including in human gut bacteria. We discovered it 70 years after we declared the Central Dogma complete.',activity:'KNOWLEDGE TIMELINE: Students create a visual timeline of challenges to the Central Dogma. Event 1: 1958 — Crick declares the Dogma. Event 2: 1970 — Temin discovers reverse transcriptase. Event 3: 1980s — RNA world hypothesis. Event 4: 2006 — RNA interference. Event 5: 2026 — Drt3b builds DNA with no nucleic acid template. For each event, students describe what the discovery added, what it did not change, and what question it opened. Final question: draw what you think the Central Dogma diagram looks like NOW.',think:'💭 If a fundamental rule of molecular biology was incomplete for 70 years and the exception was hiding in common gut bacteria all along — what does that tell us about scientific certainty?',assessment:"Students write a letter from Francis Crick — dated April 2026 — responding to the discovery of Drt3b. The letter must acknowledge what Drt3b does, explain what the Central Dogma still correctly describes, and propose what the revised model should look like. Students must use accurate molecular biology in Crick's voice."},
+  drt3b:{meta:'Class XII · Ch.6 & Ch.11 · 2 Periods',title:'Drt3b: From Bacteria to Biotechnology',hook:'Tell students the CRISPR story in 3 minutes: discovered in bacteria 1987 → ignored for 25 years → 2012 Doudna and Charpentier realise it can edit any genome → 2020 Nobel Prize. Then ask: what if there is another CRISPR sitting undiscovered in bacteria right now? There is. It was found last month. It is called Drt3b.',ncert:'Biotechnology: Principles and Processes (Ch.11): enzymes in biotechnology, restriction enzymes, polymerases, gene cloning tools. Molecular Basis of Inheritance (Ch.6): DNA polymerase, template-dependent synthesis. Human Health and Disease (Ch.8): bacterial immune systems.',connection:'Drt3b is part of the DRT3 bacterial defence system against viral attack. It synthesises DNA using its own protein architecture as a mould — no nucleic acid template required. This template-free mechanism could theoretically be used to synthesise specific DNA sequences in ways current biotechnology cannot achieve. The comparison to CRISPR is structural: both are bacterial immune mechanisms, both were ignored initially, both have profound implications for biotechnology.',activity:'PATHWAY MAPPING: Students trace CRISPR from discovery (1987) to Nobel Prize (2020) identifying each step — discovery, characterisation, realisation of application, development, clinical trials, commercial application, ethical controversy, regulatory response. Then students apply this same pathway template to Drt3b — where is it now? What applications are plausible — cancer diagnostics, synthetic biology, novel antibiotics? What ethical questions arise at each stage?',think:'💭 If bacteria invented a mechanism 3.5 billion years ago that we now want to use commercially — who should own the patent?',assessment:'Students draft a 150-word grant proposal for a Drt3b research application. They must name one specific application, explain the biological mechanism they are exploiting, identify one risk or unknown, and state how much funding they are requesting and what it will be used for. Judge the proposals as a class — which application is most compelling and why?'},
+  mito:{meta:'Class XII · Ch.5 & Ch.6 · 3 Periods',title:"Your Mother's Mitochondria: Maternal Inheritance & Three-Parent Babies",hook:'Ask the class: how much of your DNA came from your father? They will say 50%. Ask: is that the whole story? Then tell them about the 37 genes that came only from their mother — and from her mother — going back 150,000 years to a woman in sub-Saharan Africa whose mitochondria are in every single one of their cells right now.',ncert:'Principles of Inheritance and Variation (Ch.5): chromosomal theory, sex-linked inheritance, maternal inheritance as an exception. Molecular Basis of Inheritance (Ch.6): mitochondrial DNA, endosymbiont theory, circular DNA, maternal transmission mechanism. Cell: The Unit of Life (Ch.8): mitochondria structure and function, endosymbiont hypothesis.',connection:"Mitochondrial DNA is inherited exclusively through the maternal line because the sperm's mitochondria are tagged with ubiquitin and destroyed by the egg upon fertilisation. A human egg contains up to 100,000 mitochondria. A heart cell contains up to 5,000. A red blood cell contains zero. Maternal inheritance means daughters carry and transmit the complete maternal mitochondrial identity; sons carry it but cannot pass it on.",activity:'PERIOD 1 — LINEAGE TRACING: Students draw their own maternal lineage as far back as they know, then extend it conceptually to Mitochondrial Eve. Discussion: what does it mean that every human maternal line traces to one woman in Africa?\n\nPERIOD 2 — THREE-PARENT BABY DEBATE: Students divide into four groups — scientists advocating for mitochondrial replacement therapy, ethicists opposing germline intervention, parents of children with MELAS, and government regulators. Each group prepares a 3-minute position statement. The class reaches a verdict: should India legalise mitochondrial replacement therapy?\n\nPERIOD 3 — INDIA DIAGNOSIS GAP: Students map the diagnostic journey for a child with suspected mitochondrial disease in London versus a government hospital in Delhi. At each step they identify what exists in the UK and what does not in India. Final discussion: is the diagnosis gap a biology problem or a policy problem?',think:"💭 If mitochondrial DNA passes only through the maternal line — making mothers the sole carriers of cellular energy inheritance across all of human history — why does every patrilineal society treat the father's genetic contribution as primary?",assessment:"Students create a Patient Journey Map for a fictional 4-year-old girl in Delhi showing signs of Leigh Syndrome. The map traces: first symptom noticed → family response → first doctor visit → misdiagnosis → second opinion → genetic testing → diagnosis → treatment options. Students must identify at each step what biological knowledge is needed and what systemic barrier exists. Final reflection: what would need to change — in biology education, healthcare infrastructure, or policy — for this child to receive an accurate diagnosis within 6 months?"}
+};
+
+function renderArticles(){
+  const grid=document.getElementById('articlesGrid');
+  const order=['pollution','euphrates','dogma','drt3b','mito','crisprBaby','covid'];
+  grid.innerHTML=order.map(id=>{
+    const a=ARTICLES[id];
+    return`<div class="art-card"><div class="art-head"><div class="art-tag-sm">${a.tag}</div><div class="art-title-sm">${a.title}</div></div><div class="art-body-sm"><div class="art-ncert-sm">${a.ncert}</div><p class="art-teaser">${a.teaser}</p><div class="art-footer-sm"><button class="btn-read" onclick="openArticle('${id}')">Read Full Article →</button></div></div></div>`;
+  }).join('');
+}
+
+function openArticle(id){
+  const a=ARTICLES[id];
+  document.getElementById('apTag').textContent=a.tag;
+  document.getElementById('apTitle').textContent=a.title;
+  document.getElementById('apBody').innerHTML=a.content;
+  const btn=document.getElementById('apLessonBtn');
+  if(a.lessonId&&LESSONS[a.lessonId]){
+    btn.className='btn-lesson';
+    btn.textContent='📚 Lesson Plan for Teachers';
+    btn.onclick=()=>openLesson(a.lessonId);
+  }else{
+    btn.className='btn-lesson-soon';
+    btn.textContent='📚 Lesson Plan — Coming Soon';
+    btn.onclick=null;
+  }
+  document.getElementById('artOverlay').classList.add('open');
+  document.getElementById('artPopup').classList.add('open');
+  document.getElementById('artPopup').querySelector('.art-popup-body').scrollTop=0;
+  document.body.style.overflow='hidden';
+}
+function closeArticle(){
+  document.getElementById('artOverlay').classList.remove('open');
+  document.getElementById('artPopup').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function openLesson(id){
+  const l=LESSONS[id];
+  document.getElementById('lpMeta').textContent=l.meta;
+  document.getElementById('lpTitle').textContent=l.title;
+  document.getElementById('lpBody').innerHTML=`<div class="l-section"><div class="l-lbl">Real World Hook</div><div class="l-box"><p>${l.hook}</p></div></div><div class="l-section"><div class="l-lbl">NCERT Concepts Covered</div><p>${l.ncert}</p></div><div class="l-section"><div class="l-lbl">World Connection</div><p>${l.connection}</p></div><div class="l-section"><div class="l-lbl">Classroom Activity</div><div class="l-box"><p>${l.activity.replace(/\n\n/g,'</p><br><p>')}</p></div></div><div class="l-section"><div class="l-lbl">Think About It</div><div class="l-think">${l.think}</div></div><div class="l-section"><div class="l-lbl">Assessment Idea</div><div class="l-assess"><p>${l.assessment}</p></div></div>`;
+  document.getElementById('lessonPopup').classList.add('open');
+  document.getElementById('lessonPopup').querySelector('.lesson-popup-body').scrollTop=0;
+  document.body.style.overflow='hidden';
+}
+function closeLesson(){
+  document.getElementById('lessonPopup').classList.remove('open');
+}
+
+function openPop(id){
+  const h=hotspots[id];if(!h)return;
+  document.getElementById('pTag').textContent=h.tag;
+  document.getElementById('pTitle').textContent=h.title;
+  document.getElementById('pNcert').textContent=h.ncert;
+  document.getElementById('pBody').textContent=h.body;
+  document.getElementById('pThink').textContent=h.think;
   document.getElementById('popOverlay').classList.add('open');
   document.getElementById('popBox').classList.add('open');
 }
-function closePop() {
+function closePop(){
   document.getElementById('popOverlay').classList.remove('open');
   document.getElementById('popBox').classList.remove('open');
 }
-function switchAtlas(tab, btn) {
-  document.getElementById('map-world').style.display = tab === 'world' ? 'block' : 'none';
-  document.getElementById('map-india').style.display = tab === 'india' ? 'block' : 'none';
-  document.querySelectorAll('.atlas-tab').forEach(t => t.classList.remove('active'));
+function switchAtlas(tab,btn){
+  document.getElementById('map-world').style.display=tab==='world'?'block':'none';
+  document.getElementById('map-india').style.display=tab==='india'?'block':'none';
+  document.querySelectorAll('.atlas-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
 }
-function switchLesson(tab, btn) {
-  ['cbse','global'].forEach(t => document.getElementById('lesson-'+t).classList.remove('active'));
+function switchLesson(tab,btn){
+  ['cbse','global'].forEach(t=>document.getElementById('lesson-'+t).classList.remove('active'));
   document.getElementById('lesson-'+tab).classList.add('active');
-  document.querySelectorAll('.lesson-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.lesson-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closePop(); });
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if(document.getElementById('lessonPopup').classList.contains('open')){closeLesson();return;}
+    if(document.getElementById('artPopup').classList.contains('open')){closeArticle();return;}
+    closePop();
+  }
+});
+renderArticles();
 </script>
 </body>
 </html>
